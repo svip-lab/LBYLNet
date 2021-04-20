@@ -174,16 +174,17 @@ _visualize(image, pred_bbox=bbox, phrase=phrase, save_path='imgs/demo_out.jpg', 
 
 **Input:** 
 <img src="imgs/demo.jpeg" width="512"> 
+
 **Output:** 
 <img src="imgs/demo_out.jpg" width="512">
 
 --------------------------------
-###Acknowledgements
+### Acknowledgements
 This repo is organized as [CornerNet-Lite](https://github.com/princeton-vl/CornerNet-Lite) and the code is partially from [FAOA](https://github.com/zyang-ur/onestage_grounding) (*e.g.* data preparation) and [MAttNet](https://github.com/lichengunc/MAttNet) (*e.g.* LSTM). We thank for their great works.
 
 ----------------------------------
 
-###Citations:
+### Citations:
 If you use any part of this repo in your research, please cite our paper:
 
 ```
