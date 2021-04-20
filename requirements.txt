@@ -1,0 +1,12 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+cython=0.28.5=py37hf484d3e_0
+opencv-python=4.2.0.34=pypi_0
+packaging=20.3=pypi_0
+pillow=5.2.0=py37heded4f4_0
+pytorch-pretrained-bert=0.6.2=pypi_0
+tqdm=4.45.0=pypi_0
+# python=3.7.1=h0371630_3
+# torch=1.6.0+cu92=pypi_0
+# torchvision=0.7.0+cu92=pypi_0
