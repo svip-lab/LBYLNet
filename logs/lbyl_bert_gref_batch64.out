@@ -1,0 +1,518 @@
+2021-03-29 23:25:37,720 - INFO - ==================================================================
+2021-03-29 23:25:37,720 - INFO - train start from here ... 
+
+2021-03-29 23:25:39,499 - INFO - loading archive file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz from cache at /root/.pytorch_pretrained_bert/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+2021-03-29 23:25:39,502 - INFO - extracting archive file /root/.pytorch_pretrained_bert/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba to temp dir /tmp/tmpl9n_wo7f
+2021-03-29 23:25:43,550 - INFO - Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+2021-03-29 23:25:46,117 - INFO - Process 0: loading all datasets...
+2021-03-29 23:25:46,117 - INFO - Process 0: using 8 workers
+2021-03-29 23:25:50,416 - INFO - system config...
+2021-03-29 23:25:50,416 - INFO - {'dataset': 'gref', 'language': 'bert-base-uncased', 'model': 'LBYLNet', 'anchor_based': True, 'context': 'LandmarkP4', 'ctx_dim': 128, 'visu_weight': 'yolov3.weights', 'lr_scheduler': 'cosin_lr', 'warm_up': True, 'warm_up_epoch': 5, 'warm_up_from_lr': 1e-06, 'learning_rate': 0.0001, 'decay_rate': 10, 'milestone': [30, 80], 'gamma': 0.1, 'opt_algo': 'adam', 'display': 5, 'nb_epoch': 30, 'print_freq': 100, 'snapshot': 5, 'stepsize': 80, 'val_iter': 1, 'batch_size': 64, 'snapshot_name': 'lbyl_bert_gref_batch64', 'prefetch_size': 100, 'pretrain': None, 'chunk_sizes': [32], 'corpus_dir': './data/refer/', 'data_dir': './data', 'cache_dir': './cache', 'config_dir': './config', 'result_dir': './results', 'train_split': 'train', 'val_split': 'val', 'test_split': 'testA', 'data_rng': RandomState(MT19937) at 0x7F60E3978258, 'nnet_rng': RandomState(MT19937) at 0x7F60E3978360}
+2021-03-29 23:25:50,417 - INFO - db config...
+2021-03-29 23:25:50,417 - INFO - {'data_aug': True, 'random_flip': True, 'random_affine': True, 'random_color': True, 'random_lighting': True, 'input_size': [256, 256], 'output_sizes': [32, 32], 'anchors': [(373.0, 326.0), (156.0, 198.0), (116.0, 90.0), (59.0, 119.0), (62.0, 45.0), (30.0, 61.0), (33.0, 23.0), (16.0, 30.0), (10.0, 13.0)], 'vocab_size': 0, 'word_embedding_size': 512, 'word_vec_size': 512, 'hidden_size': 512, 'bidirectional': True, 'input_dropout_p': 0.5, 'dropout_p': 0.2, 'n_layers': 1, 'max_query_len': 128, 'variable_length': True, 'joint_embedding_size': 256, 'joint_out_dim': 256, 'joint_embedding_dropout': 0.1, 'joint_mlp_layers': 2, 'corpus_path': '/p300/ai_usr/LBYLNet/core/../data/refer/data/gref/corpus.pth'}
+2021-03-29 23:25:50,417 - INFO - len of training db: 85474
+2021-03-29 23:25:50,417 - INFO - len of validate db: 9536
+2021-03-29 23:25:50,417 - INFO - distributed: True
+2021-03-29 23:25:50,421 - INFO - loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+2021-03-29 23:25:50,504 - INFO - loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+2021-03-29 23:25:58,176 - INFO - ground model total parameters: 177.63 M
+2021-03-29 23:25:58,179 - INFO - training start...
+2021-03-29 23:28:15,404 - INFO - Process 0	epoch[0][100/1336]	time 0.929 (1.372)	data 0.000 (0.418)	loss 9.6714 (10.1932)	rank loss 7.9451 (8.1726)	offs loss 1.7263 (2.020587)	lr 0.00000100
+2021-03-29 23:29:46,319 - INFO - Process 0	epoch[0][200/1336]	time 0.895 (1.141)	data 0.000 (0.209)	loss 9.6090 (9.8741)	rank loss 7.6687 (7.9836)	offs loss 1.9403 (1.890500)	lr 0.00000100
+2021-03-29 23:31:17,476 - INFO - Process 0	epoch[0][300/1336]	time 0.958 (1.064)	data 0.000 (0.139)	loss 8.8079 (9.6529)	rank loss 7.2824 (7.8127)	offs loss 1.5255 (1.840184)	lr 0.00000100
+2021-03-29 23:32:49,270 - INFO - Process 0	epoch[0][400/1336]	time 0.918 (1.028)	data 0.000 (0.105)	loss 8.8088 (9.4725)	rank loss 7.1722 (7.6646)	offs loss 1.6367 (1.807959)	lr 0.00000100
+2021-03-29 23:34:20,863 - INFO - Process 0	epoch[0][500/1336]	time 0.905 (1.005)	data 0.000 (0.084)	loss 8.4974 (9.3142)	rank loss 6.8545 (7.5341)	offs loss 1.6429 (1.780067)	lr 0.00000100
+2021-03-29 23:35:52,523 - INFO - Process 0	epoch[0][600/1336]	time 0.944 (0.991)	data 0.000 (0.070)	loss 8.5628 (9.1791)	rank loss 6.8800 (7.4213)	offs loss 1.6828 (1.757787)	lr 0.00000100
+2021-03-29 23:37:24,195 - INFO - Process 0	epoch[0][700/1336]	time 0.923 (0.980)	data 0.000 (0.060)	loss 8.3718 (9.0602)	rank loss 6.6757 (7.3216)	offs loss 1.6961 (1.738623)	lr 0.00000100
+2021-03-29 23:38:55,762 - INFO - Process 0	epoch[0][800/1336]	time 0.902 (0.972)	data 0.000 (0.052)	loss 8.2227 (8.9590)	rank loss 6.5576 (7.2352)	offs loss 1.6651 (1.723802)	lr 0.00000100
+2021-03-29 23:40:27,822 - INFO - Process 0	epoch[0][900/1336]	time 0.908 (0.966)	data 0.000 (0.047)	loss 8.1659 (8.8709)	rank loss 6.5093 (7.1594)	offs loss 1.6566 (1.711544)	lr 0.00000100
+2021-03-29 23:41:59,543 - INFO - Process 0	epoch[0][1000/1336]	time 0.887 (0.961)	data 0.000 (0.042)	loss 8.0931 (8.7927)	rank loss 6.4443 (7.0928)	offs loss 1.6488 (1.699870)	lr 0.00000100
+2021-03-29 23:43:31,580 - INFO - Process 0	epoch[0][1100/1336]	time 0.965 (0.958)	data 0.000 (0.038)	loss 8.0542 (8.7212)	rank loss 6.5685 (7.0330)	offs loss 1.4858 (1.688190)	lr 0.00000100
+2021-03-29 23:45:04,179 - INFO - Process 0	epoch[0][1200/1336]	time 0.888 (0.955)	data 0.000 (0.035)	loss 8.0532 (8.6560)	rank loss 6.2788 (6.9775)	offs loss 1.7744 (1.678512)	lr 0.00000100
+2021-03-29 23:46:36,123 - INFO - Process 0	epoch[0][1300/1336]	time 0.902 (0.952)	data 0.000 (0.032)	loss 8.0117 (8.5965)	rank loss 6.2627 (6.9287)	offs loss 1.7490 (1.667794)	lr 0.00000100
+2021-03-29 23:47:16,815 - INFO - evaluating...
+2021-03-29 23:47:52,981 - INFO - Process 0	epoch[0][100/149]	time 0.252 (0.362)	data 0.000 (0.114)	loss 7.7699 (7.8180)	rank loss 6.2560 (6.2976)	offs loss 1.5140 (1.520397)	lr 0.00000100
+2021-03-29 23:48:06,297 - INFO - train...
+2021-03-29 23:50:10,015 - INFO - Process 0	epoch[1][100/1336]	time 0.910 (1.237)	data 0.000 (0.304)	loss 7.5548 (7.7890)	rank loss 6.2853 (6.2645)	offs loss 1.2695 (1.524555)	lr 0.00000100
+2021-03-29 23:51:42,414 - INFO - Process 0	epoch[1][200/1336]	time 0.921 (1.081)	data 0.000 (0.152)	loss 7.8310 (7.7896)	rank loss 6.2474 (6.2516)	offs loss 1.5835 (1.537957)	lr 0.00000100
+2021-03-29 23:53:13,715 - INFO - Process 0	epoch[1][300/1336]	time 0.890 (1.025)	data 0.000 (0.101)	loss 8.1009 (7.7529)	rank loss 6.4323 (6.2228)	offs loss 1.6686 (1.530095)	lr 0.00000100
+2021-03-29 23:54:45,497 - INFO - Process 0	epoch[1][400/1336]	time 0.939 (0.998)	data 0.000 (0.076)	loss 7.3941 (7.7158)	rank loss 5.8727 (6.1943)	offs loss 1.5215 (1.521573)	lr 0.00000100
+2021-03-29 23:56:17,283 - INFO - Process 0	epoch[1][500/1336]	time 0.947 (0.982)	data 0.000 (0.061)	loss 7.7060 (7.6841)	rank loss 6.1184 (6.1696)	offs loss 1.5876 (1.514455)	lr 0.00000100
+2021-03-29 23:57:49,251 - INFO - Process 0	epoch[1][600/1336]	time 0.901 (0.972)	data 0.000 (0.051)	loss 7.1612 (7.6566)	rank loss 5.7004 (6.1453)	offs loss 1.4608 (1.511243)	lr 0.00000100
+2021-03-29 23:59:20,750 - INFO - Process 0	epoch[1][700/1336]	time 0.904 (0.963)	data 0.000 (0.044)	loss 7.5273 (7.6249)	rank loss 5.9816 (6.1218)	offs loss 1.5456 (1.503077)	lr 0.00000100
+2021-03-30 00:00:52,791 - INFO - Process 0	epoch[1][800/1336]	time 0.892 (0.958)	data 0.000 (0.038)	loss 7.2382 (7.5937)	rank loss 5.6547 (6.0960)	offs loss 1.5835 (1.497762)	lr 0.00000100
+2021-03-30 00:02:24,556 - INFO - Process 0	epoch[1][900/1336]	time 0.894 (0.954)	data 0.000 (0.034)	loss 7.4013 (7.5613)	rank loss 5.8540 (6.0675)	offs loss 1.5473 (1.493847)	lr 0.00000100
+2021-03-30 00:03:56,636 - INFO - Process 0	epoch[1][1000/1336]	time 0.911 (0.950)	data 0.000 (0.031)	loss 7.3450 (7.5244)	rank loss 5.9016 (6.0390)	offs loss 1.4435 (1.485385)	lr 0.00000100
+2021-03-30 00:05:28,589 - INFO - Process 0	epoch[1][1100/1336]	time 0.914 (0.947)	data 0.000 (0.028)	loss 7.2295 (7.4900)	rank loss 5.7504 (6.0082)	offs loss 1.4791 (1.481812)	lr 0.00000100
+2021-03-30 00:07:00,179 - INFO - Process 0	epoch[1][1200/1336]	time 0.938 (0.945)	data 0.000 (0.026)	loss 6.7789 (7.4528)	rank loss 5.4643 (5.9755)	offs loss 1.3147 (1.477282)	lr 0.00000100
+2021-03-30 00:08:32,478 - INFO - Process 0	epoch[1][1300/1336]	time 0.917 (0.943)	data 0.000 (0.024)	loss 6.8205 (7.4174)	rank loss 5.4103 (5.9445)	offs loss 1.4101 (1.472913)	lr 0.00000100
+2021-03-30 00:09:09,031 - INFO - evaluating...
+2021-03-30 00:09:53,754 - INFO - Process 0	epoch[1][100/149]	time 0.252 (0.447)	data 0.000 (0.178)	loss 6.5150 (6.8476)	rank loss 5.3229 (5.4552)	offs loss 1.1922 (1.392398)	lr 0.00002080
+2021-03-30 00:10:06,890 - INFO - train...
+2021-03-30 00:12:11,855 - INFO - Process 0	epoch[2][100/1336]	time 0.892 (1.250)	data 0.000 (0.312)	loss 5.2859 (6.0621)	rank loss 3.9801 (4.7056)	offs loss 1.3058 (1.356535)	lr 0.00002080
+2021-03-30 00:13:43,766 - INFO - Process 0	epoch[2][200/1336]	time 0.975 (1.084)	data 0.000 (0.156)	loss 4.6960 (5.4961)	rank loss 3.6112 (4.2359)	offs loss 1.0848 (1.260223)	lr 0.00002080
+2021-03-30 00:15:15,682 - INFO - Process 0	epoch[2][300/1336]	time 0.910 (1.029)	data 0.000 (0.104)	loss 4.3669 (5.1230)	rank loss 3.4447 (3.9538)	offs loss 0.9222 (1.169151)	lr 0.00002080
+2021-03-30 00:16:47,681 - INFO - Process 0	epoch[2][400/1336]	time 0.904 (1.002)	data 0.000 (0.078)	loss 3.9615 (4.8568)	rank loss 3.0024 (3.7575)	offs loss 0.9591 (1.099285)	lr 0.00002080
+2021-03-30 00:18:19,354 - INFO - Process 0	epoch[2][500/1336]	time 0.961 (0.985)	data 0.000 (0.062)	loss 3.7045 (4.6490)	rank loss 2.8731 (3.6088)	offs loss 0.8314 (1.040268)	lr 0.00002080
+2021-03-30 00:19:51,604 - INFO - Process 0	epoch[2][600/1336]	time 0.922 (0.975)	data 0.000 (0.052)	loss 3.4002 (4.4846)	rank loss 2.7101 (3.4915)	offs loss 0.6901 (0.993068)	lr 0.00002080
+2021-03-30 00:21:23,190 - INFO - Process 0	epoch[2][700/1336]	time 0.906 (0.966)	data 0.000 (0.045)	loss 3.3637 (4.3477)	rank loss 2.6799 (3.3952)	offs loss 0.6838 (0.952498)	lr 0.00002080
+2021-03-30 00:22:55,052 - INFO - Process 0	epoch[2][800/1336]	time 0.991 (0.960)	data 0.000 (0.039)	loss 3.3281 (4.2405)	rank loss 2.7958 (3.3209)	offs loss 0.5323 (0.919536)	lr 0.00002080
+2021-03-30 00:24:26,831 - INFO - Process 0	epoch[2][900/1336]	time 0.896 (0.955)	data 0.000 (0.035)	loss 3.2597 (4.1402)	rank loss 2.6095 (3.2490)	offs loss 0.6502 (0.891224)	lr 0.00002080
+2021-03-30 00:25:58,551 - INFO - Process 0	epoch[2][1000/1336]	time 0.915 (0.952)	data 0.000 (0.031)	loss 3.1668 (4.0515)	rank loss 2.6862 (3.1869)	offs loss 0.4805 (0.864596)	lr 0.00002080
+2021-03-30 00:27:30,811 - INFO - Process 0	epoch[2][1100/1336]	time 0.897 (0.949)	data 0.000 (0.028)	loss 3.2079 (3.9790)	rank loss 2.5961 (3.1368)	offs loss 0.6118 (0.842192)	lr 0.00002080
+2021-03-30 00:29:02,964 - INFO - Process 0	epoch[2][1200/1336]	time 0.923 (0.947)	data 0.000 (0.026)	loss 3.0505 (3.9154)	rank loss 2.3974 (3.0919)	offs loss 0.6531 (0.823515)	lr 0.00002080
+2021-03-30 00:30:34,543 - INFO - Process 0	epoch[2][1300/1336]	time 0.905 (0.944)	data 0.000 (0.024)	loss 3.3235 (3.8592)	rank loss 2.6605 (3.0531)	offs loss 0.6630 (0.806071)	lr 0.00002080
+2021-03-30 00:31:11,776 - INFO - evaluating...
+2021-03-30 00:32:00,697 - INFO - Process 0	epoch[2][100/149]	time 0.248 (0.489)	data 0.000 (0.229)	loss 2.9179 (3.1771)	rank loss 2.3734 (2.5850)	offs loss 0.5444 (0.592161)	lr 0.00004060
+2021-03-30 00:32:13,843 - INFO - train...
+2021-03-30 00:34:18,271 - INFO - Process 0	epoch[3][100/1336]	time 0.917 (1.244)	data 0.000 (0.322)	loss 2.7401 (3.0537)	rank loss 2.2967 (2.4556)	offs loss 0.4434 (0.598092)	lr 0.00004060
+2021-03-30 00:35:49,867 - INFO - Process 0	epoch[3][200/1336]	time 0.893 (1.080)	data 0.000 (0.161)	loss 3.3475 (3.0519)	rank loss 2.7911 (2.4545)	offs loss 0.5564 (0.597375)	lr 0.00004060
+2021-03-30 00:37:21,851 - INFO - Process 0	epoch[3][300/1336]	time 0.909 (1.027)	data 0.000 (0.107)	loss 2.6906 (3.0259)	rank loss 2.0868 (2.4387)	offs loss 0.6038 (0.587204)	lr 0.00004060
+2021-03-30 00:38:53,778 - INFO - Process 0	epoch[3][400/1336]	time 0.898 (1.000)	data 0.000 (0.081)	loss 3.1074 (3.0018)	rank loss 2.5852 (2.4183)	offs loss 0.5222 (0.583594)	lr 0.00004060
+2021-03-30 00:40:25,550 - INFO - Process 0	epoch[3][500/1336]	time 0.888 (0.983)	data 0.000 (0.065)	loss 3.1993 (2.9828)	rank loss 2.5977 (2.4090)	offs loss 0.6016 (0.573768)	lr 0.00004060
+2021-03-30 00:41:57,650 - INFO - Process 0	epoch[3][600/1336]	time 0.915 (0.973)	data 0.000 (0.054)	loss 3.0733 (2.9553)	rank loss 2.5138 (2.3900)	offs loss 0.5595 (0.565366)	lr 0.00004060
+2021-03-30 00:43:29,341 - INFO - Process 0	epoch[3][700/1336]	time 0.966 (0.965)	data 0.000 (0.046)	loss 2.8336 (2.9372)	rank loss 2.2463 (2.3787)	offs loss 0.5873 (0.558460)	lr 0.00004060
+2021-03-30 00:45:01,281 - INFO - Process 0	epoch[3][800/1336]	time 0.911 (0.959)	data 0.000 (0.040)	loss 3.0028 (2.9225)	rank loss 2.4004 (2.3682)	offs loss 0.6024 (0.554253)	lr 0.00004060
+2021-03-30 00:46:32,922 - INFO - Process 0	epoch[3][900/1336]	time 0.924 (0.955)	data 0.000 (0.036)	loss 2.7172 (2.9035)	rank loss 2.2152 (2.3534)	offs loss 0.5020 (0.550115)	lr 0.00004060
+2021-03-30 00:48:05,175 - INFO - Process 0	epoch[3][1000/1336]	time 0.922 (0.951)	data 0.000 (0.032)	loss 2.3137 (2.8846)	rank loss 1.8781 (2.3389)	offs loss 0.4356 (0.545649)	lr 0.00004060
+2021-03-30 00:49:36,580 - INFO - Process 0	epoch[3][1100/1336]	time 0.915 (0.948)	data 0.000 (0.029)	loss 3.1817 (2.8678)	rank loss 2.5181 (2.3268)	offs loss 0.6636 (0.541070)	lr 0.00004060
+2021-03-30 00:51:08,277 - INFO - Process 0	epoch[3][1200/1336]	time 0.894 (0.945)	data 0.000 (0.027)	loss 2.7156 (2.8518)	rank loss 2.2067 (2.3138)	offs loss 0.5089 (0.537992)	lr 0.00004060
+2021-03-30 00:52:40,116 - INFO - Process 0	epoch[3][1300/1336]	time 0.936 (0.943)	data 0.000 (0.025)	loss 2.5576 (2.8378)	rank loss 2.1822 (2.3040)	offs loss 0.3754 (0.533784)	lr 0.00004060
+2021-03-30 00:53:16,525 - INFO - evaluating...
+2021-03-30 00:53:52,487 - INFO - Process 0	epoch[3][100/149]	time 0.286 (0.360)	data 0.000 (0.107)	loss 2.4785 (2.8064)	rank loss 2.0659 (2.3046)	offs loss 0.4126 (0.501741)	lr 0.00006040
+2021-03-30 00:54:05,372 - INFO - train...
+2021-03-30 00:56:05,878 - INFO - Process 0	epoch[4][100/1336]	time 0.925 (1.205)	data 0.000 (0.298)	loss 2.3834 (2.5669)	rank loss 1.8210 (2.0665)	offs loss 0.5624 (0.500412)	lr 0.00006040
+2021-03-30 00:57:37,142 - INFO - Process 0	epoch[4][200/1336]	time 0.900 (1.059)	data 0.000 (0.149)	loss 2.1204 (2.5422)	rank loss 1.6835 (2.0534)	offs loss 0.4369 (0.488844)	lr 0.00006040
+2021-03-30 00:59:08,832 - INFO - Process 0	epoch[4][300/1336]	time 0.899 (1.012)	data 0.000 (0.099)	loss 2.5976 (2.5575)	rank loss 2.1729 (2.0721)	offs loss 0.4247 (0.485397)	lr 0.00006040
+2021-03-30 01:00:40,711 - INFO - Process 0	epoch[4][400/1336]	time 0.894 (0.988)	data 0.000 (0.075)	loss 3.2133 (2.5635)	rank loss 2.5009 (2.0766)	offs loss 0.7124 (0.486843)	lr 0.00006040
+2021-03-30 01:02:12,318 - INFO - Process 0	epoch[4][500/1336]	time 0.945 (0.974)	data 0.000 (0.060)	loss 2.3697 (2.5596)	rank loss 1.9706 (2.0727)	offs loss 0.3991 (0.486942)	lr 0.00006040
+2021-03-30 01:03:44,325 - INFO - Process 0	epoch[4][600/1336]	time 0.937 (0.965)	data 0.000 (0.050)	loss 2.5191 (2.5658)	rank loss 2.0319 (2.0794)	offs loss 0.4872 (0.486335)	lr 0.00006040
+2021-03-30 01:05:16,089 - INFO - Process 0	epoch[4][700/1336]	time 0.921 (0.958)	data 0.000 (0.043)	loss 2.4325 (2.5603)	rank loss 1.9283 (2.0768)	offs loss 0.5041 (0.483504)	lr 0.00006040
+2021-03-30 01:06:47,885 - INFO - Process 0	epoch[4][800/1336]	time 0.935 (0.953)	data 0.000 (0.037)	loss 2.5786 (2.5529)	rank loss 2.1521 (2.0716)	offs loss 0.4264 (0.481290)	lr 0.00006040
+2021-03-30 01:08:19,732 - INFO - Process 0	epoch[4][900/1336]	time 0.913 (0.949)	data 0.000 (0.033)	loss 2.3290 (2.5447)	rank loss 1.7825 (2.0670)	offs loss 0.5465 (0.477608)	lr 0.00006040
+2021-03-30 01:09:51,705 - INFO - Process 0	epoch[4][1000/1336]	time 0.930 (0.946)	data 0.000 (0.030)	loss 2.2723 (2.5361)	rank loss 1.8753 (2.0615)	offs loss 0.3970 (0.474528)	lr 0.00006040
+2021-03-30 01:11:24,129 - INFO - Process 0	epoch[4][1100/1336]	time 0.933 (0.944)	data 0.000 (0.027)	loss 2.1224 (2.5288)	rank loss 1.6614 (2.0572)	offs loss 0.4610 (0.471596)	lr 0.00006040
+2021-03-30 01:12:55,847 - INFO - Process 0	epoch[4][1200/1336]	time 0.885 (0.942)	data 0.000 (0.025)	loss 2.3716 (2.5172)	rank loss 1.9252 (2.0491)	offs loss 0.4463 (0.468186)	lr 0.00006040
+2021-03-30 01:14:27,667 - INFO - Process 0	epoch[4][1300/1336]	time 0.899 (0.940)	data 0.000 (0.023)	loss 2.3881 (2.5131)	rank loss 2.0094 (2.0463)	offs loss 0.3787 (0.466815)	lr 0.00006040
+2021-03-30 01:15:04,028 - INFO - saving model to 5
+2021-03-30 01:15:07,015 - INFO - evaluating...
+2021-03-30 01:15:46,102 - INFO - Process 0	epoch[4][100/149]	time 0.243 (0.391)	data 0.000 (0.140)	loss 2.5841 (2.7921)	rank loss 2.0371 (2.2921)	offs loss 0.5470 (0.500063)	lr 0.00008020
+2021-03-30 01:15:59,185 - INFO - train...
+2021-03-30 01:18:03,784 - INFO - Process 0	epoch[5][100/1336]	time 0.888 (1.246)	data 0.000 (0.343)	loss 2.1373 (2.3003)	rank loss 1.6733 (1.8668)	offs loss 0.4640 (0.433434)	lr 0.00008020
+2021-03-30 01:19:35,533 - INFO - Process 0	epoch[5][200/1336]	time 0.914 (1.082)	data 0.000 (0.172)	loss 2.2657 (2.3237)	rank loss 1.7254 (1.8799)	offs loss 0.5403 (0.443750)	lr 0.00008020
+2021-03-30 01:21:07,224 - INFO - Process 0	epoch[5][300/1336]	time 0.905 (1.027)	data 0.000 (0.114)	loss 2.4056 (2.3390)	rank loss 1.9786 (1.8958)	offs loss 0.4270 (0.443180)	lr 0.00008020
+2021-03-30 01:22:39,002 - INFO - Process 0	epoch[5][400/1336]	time 0.905 (1.000)	data 0.000 (0.086)	loss 2.3718 (2.3333)	rank loss 1.9264 (1.8921)	offs loss 0.4455 (0.441245)	lr 0.00008020
+2021-03-30 01:24:10,977 - INFO - Process 0	epoch[5][500/1336]	time 0.947 (0.984)	data 0.000 (0.069)	loss 2.1456 (2.3396)	rank loss 1.7631 (1.8984)	offs loss 0.3826 (0.441224)	lr 0.00008020
+2021-03-30 01:25:42,529 - INFO - Process 0	epoch[5][600/1336]	time 0.894 (0.972)	data 0.000 (0.057)	loss 2.2800 (2.3449)	rank loss 1.8706 (1.9034)	offs loss 0.4094 (0.441494)	lr 0.00008020
+2021-03-30 01:27:14,637 - INFO - Process 0	epoch[5][700/1336]	time 0.957 (0.965)	data 0.000 (0.049)	loss 2.4181 (2.3480)	rank loss 2.0502 (1.9079)	offs loss 0.3679 (0.440113)	lr 0.00008020
+2021-03-30 01:28:47,267 - INFO - Process 0	epoch[5][800/1336]	time 0.896 (0.960)	data 0.000 (0.043)	loss 2.0916 (2.3493)	rank loss 1.7600 (1.9100)	offs loss 0.3316 (0.439329)	lr 0.00008020
+2021-03-30 01:30:19,149 - INFO - Process 0	epoch[5][900/1336]	time 0.945 (0.956)	data 0.000 (0.038)	loss 2.5343 (2.3477)	rank loss 1.9933 (1.9085)	offs loss 0.5409 (0.439219)	lr 0.00008020
+2021-03-30 01:31:50,696 - INFO - Process 0	epoch[5][1000/1336]	time 0.911 (0.952)	data 0.000 (0.034)	loss 2.1806 (2.3498)	rank loss 1.7149 (1.9091)	offs loss 0.4657 (0.440675)	lr 0.00008020
+2021-03-30 01:33:22,209 - INFO - Process 0	epoch[5][1100/1336]	time 0.908 (0.948)	data 0.000 (0.031)	loss 2.1678 (2.3508)	rank loss 1.8411 (1.9118)	offs loss 0.3268 (0.438980)	lr 0.00008020
+2021-03-30 01:34:54,117 - INFO - Process 0	epoch[5][1200/1336]	time 0.903 (0.946)	data 0.000 (0.029)	loss 2.4388 (2.3478)	rank loss 1.9642 (1.9112)	offs loss 0.4746 (0.436618)	lr 0.00008020
+2021-03-30 01:36:26,090 - INFO - Process 0	epoch[5][1300/1336]	time 0.887 (0.944)	data 0.000 (0.027)	loss 2.5847 (2.3443)	rank loss 2.1455 (1.9089)	offs loss 0.4392 (0.435364)	lr 0.00008020
+2021-03-30 01:37:02,354 - INFO - evaluating...
+2021-03-30 01:37:40,151 - INFO - Process 0	epoch[5][100/149]	time 0.245 (0.378)	data 0.000 (0.114)	loss 2.6094 (2.7735)	rank loss 2.0897 (2.2886)	offs loss 0.5197 (0.484829)	lr 0.00010000
+2021-03-30 01:37:53,371 - INFO - train...
+2021-03-30 01:39:57,504 - INFO - Process 0	epoch[6][100/1336]	time 0.903 (1.241)	data 0.000 (0.336)	loss 2.2176 (2.1671)	rank loss 1.8034 (1.7629)	offs loss 0.4142 (0.404251)	lr 0.00010000
+2021-03-30 01:41:29,466 - INFO - Process 0	epoch[6][200/1336]	time 0.890 (1.080)	data 0.000 (0.168)	loss 2.2776 (2.1992)	rank loss 1.8745 (1.7858)	offs loss 0.4030 (0.413333)	lr 0.00010000
+2021-03-30 01:43:01,164 - INFO - Process 0	epoch[6][300/1336]	time 0.889 (1.026)	data 0.000 (0.112)	loss 2.0759 (2.2167)	rank loss 1.7501 (1.8023)	offs loss 0.3258 (0.414472)	lr 0.00010000
+2021-03-30 01:44:32,581 - INFO - Process 0	epoch[6][400/1336]	time 0.902 (0.998)	data 0.000 (0.084)	loss 2.3437 (2.2243)	rank loss 2.0280 (1.8076)	offs loss 0.3157 (0.416640)	lr 0.00010000
+2021-03-30 01:46:04,737 - INFO - Process 0	epoch[6][500/1336]	time 0.878 (0.983)	data 0.000 (0.067)	loss 2.1147 (2.2334)	rank loss 1.7620 (1.8159)	offs loss 0.3527 (0.417530)	lr 0.00010000
+2021-03-30 01:47:36,731 - INFO - Process 0	epoch[6][600/1336]	time 0.910 (0.972)	data 0.000 (0.056)	loss 1.7594 (2.2365)	rank loss 1.3098 (1.8189)	offs loss 0.4496 (0.417625)	lr 0.00010000
+2021-03-30 01:49:08,415 - INFO - Process 0	epoch[6][700/1336]	time 0.921 (0.964)	data 0.000 (0.048)	loss 2.1717 (2.2422)	rank loss 1.7443 (1.8257)	offs loss 0.4274 (0.416497)	lr 0.00010000
+2021-03-30 01:50:40,341 - INFO - Process 0	epoch[6][800/1336]	time 0.908 (0.959)	data 0.000 (0.042)	loss 2.1042 (2.2435)	rank loss 1.7125 (1.8279)	offs loss 0.3917 (0.415597)	lr 0.00010000
+2021-03-30 01:52:11,977 - INFO - Process 0	epoch[6][900/1336]	time 0.934 (0.954)	data 0.000 (0.037)	loss 1.8295 (2.2413)	rank loss 1.4445 (1.8260)	offs loss 0.3850 (0.415316)	lr 0.00010000
+2021-03-30 01:53:43,768 - INFO - Process 0	epoch[6][1000/1336]	time 0.925 (0.950)	data 0.000 (0.034)	loss 2.1900 (2.2365)	rank loss 1.8076 (1.8223)	offs loss 0.3825 (0.414186)	lr 0.00010000
+2021-03-30 01:55:15,599 - INFO - Process 0	epoch[6][1100/1336]	time 0.909 (0.947)	data 0.000 (0.031)	loss 2.2364 (2.2380)	rank loss 1.8445 (1.8243)	offs loss 0.3920 (0.413707)	lr 0.00010000
+2021-03-30 01:56:47,252 - INFO - Process 0	epoch[6][1200/1336]	time 0.922 (0.945)	data 0.000 (0.028)	loss 2.3677 (2.2376)	rank loss 1.9087 (1.8248)	offs loss 0.4590 (0.412749)	lr 0.00010000
+2021-03-30 01:58:19,217 - INFO - Process 0	epoch[6][1300/1336]	time 0.931 (0.943)	data 0.000 (0.026)	loss 2.4177 (2.2377)	rank loss 2.0434 (1.8252)	offs loss 0.3743 (0.412458)	lr 0.00010000
+2021-03-30 01:58:55,823 - INFO - evaluating...
+2021-03-30 01:59:38,801 - INFO - Process 0	epoch[6][100/149]	time 0.256 (0.430)	data 0.000 (0.147)	loss 2.7166 (2.8428)	rank loss 2.1854 (2.3436)	offs loss 0.5312 (0.499178)	lr 0.00010000
+2021-03-30 01:59:51,779 - INFO - train...
+2021-03-30 02:01:56,436 - INFO - Process 0	epoch[7][100/1336]	time 0.924 (1.247)	data 0.000 (0.337)	loss 2.0630 (2.0180)	rank loss 1.6083 (1.6339)	offs loss 0.4548 (0.384047)	lr 0.00010000
+2021-03-30 02:03:28,462 - INFO - Process 0	epoch[7][200/1336]	time 0.893 (1.083)	data 0.000 (0.169)	loss 2.0646 (2.0332)	rank loss 1.7501 (1.6527)	offs loss 0.3145 (0.380532)	lr 0.00010000
+2021-03-30 02:05:00,323 - INFO - Process 0	epoch[7][300/1336]	time 0.892 (1.028)	data 0.000 (0.113)	loss 2.1425 (2.0454)	rank loss 1.7974 (1.6642)	offs loss 0.3450 (0.381267)	lr 0.00010000
+2021-03-30 02:06:31,739 - INFO - Process 0	epoch[7][400/1336]	time 0.894 (1.000)	data 0.000 (0.084)	loss 1.9408 (2.0550)	rank loss 1.6081 (1.6726)	offs loss 0.3327 (0.382455)	lr 0.00010000
+2021-03-30 02:08:02,963 - INFO - Process 0	epoch[7][500/1336]	time 0.913 (0.982)	data 0.000 (0.068)	loss 2.2098 (2.0604)	rank loss 1.8188 (1.6768)	offs loss 0.3910 (0.383611)	lr 0.00010000
+2021-03-30 02:09:35,185 - INFO - Process 0	epoch[7][600/1336]	time 0.902 (0.972)	data 0.000 (0.056)	loss 2.3318 (2.0639)	rank loss 1.9279 (1.6809)	offs loss 0.4039 (0.383037)	lr 0.00010000
+2021-03-30 02:11:07,135 - INFO - Process 0	epoch[7][700/1336]	time 0.915 (0.965)	data 0.000 (0.048)	loss 2.1525 (2.0680)	rank loss 1.7567 (1.6858)	offs loss 0.3958 (0.382150)	lr 0.00010000
+2021-03-30 02:12:39,461 - INFO - Process 0	epoch[7][800/1336]	time 0.938 (0.960)	data 0.000 (0.042)	loss 1.7656 (2.0656)	rank loss 1.4153 (1.6836)	offs loss 0.3503 (0.381960)	lr 0.00010000
+2021-03-30 02:14:11,527 - INFO - Process 0	epoch[7][900/1336]	time 0.915 (0.955)	data 0.000 (0.038)	loss 2.0304 (2.0671)	rank loss 1.6803 (1.6854)	offs loss 0.3501 (0.381717)	lr 0.00010000
+2021-03-30 02:15:43,898 - INFO - Process 0	epoch[7][1000/1336]	time 0.916 (0.952)	data 0.000 (0.034)	loss 2.1116 (2.0670)	rank loss 1.8303 (1.6859)	offs loss 0.2813 (0.381033)	lr 0.00010000
+2021-03-30 02:17:15,740 - INFO - Process 0	epoch[7][1100/1336]	time 0.901 (0.949)	data 0.000 (0.031)	loss 2.2099 (2.0689)	rank loss 1.8581 (1.6872)	offs loss 0.3518 (0.381742)	lr 0.00010000
+2021-03-30 02:18:47,443 - INFO - Process 0	epoch[7][1200/1336]	time 0.897 (0.946)	data 0.000 (0.028)	loss 1.9202 (2.0701)	rank loss 1.5059 (1.6881)	offs loss 0.4143 (0.381968)	lr 0.00010000
+2021-03-30 02:20:19,726 - INFO - Process 0	epoch[7][1300/1336]	time 0.912 (0.945)	data 0.000 (0.026)	loss 2.2019 (2.0719)	rank loss 1.7723 (1.6911)	offs loss 0.4296 (0.380806)	lr 0.00010000
+2021-03-30 02:20:56,435 - INFO - evaluating...
+2021-03-30 02:21:32,282 - INFO - Process 0	epoch[7][100/149]	time 0.258 (0.358)	data 0.000 (0.108)	loss 2.5006 (2.8732)	rank loss 2.0595 (2.3817)	offs loss 0.4410 (0.491567)	lr 0.00009843
+2021-03-30 02:21:45,175 - INFO - train...
+2021-03-30 02:23:47,207 - INFO - Process 0	epoch[8][100/1336]	time 0.909 (1.220)	data 0.000 (0.316)	loss 1.5948 (1.9058)	rank loss 1.3126 (1.5329)	offs loss 0.2822 (0.372866)	lr 0.00009843
+2021-03-30 02:25:18,858 - INFO - Process 0	epoch[8][200/1336]	time 0.973 (1.068)	data 0.000 (0.158)	loss 1.6399 (1.8904)	rank loss 1.3184 (1.5270)	offs loss 0.3215 (0.363481)	lr 0.00009843
+2021-03-30 02:26:50,596 - INFO - Process 0	epoch[8][300/1336]	time 0.942 (1.018)	data 0.000 (0.106)	loss 1.9857 (1.8966)	rank loss 1.5942 (1.5369)	offs loss 0.3915 (0.359668)	lr 0.00009843
+2021-03-30 02:28:22,468 - INFO - Process 0	epoch[8][400/1336]	time 0.901 (0.993)	data 0.000 (0.079)	loss 1.6841 (1.8956)	rank loss 1.3405 (1.5359)	offs loss 0.3436 (0.359709)	lr 0.00009843
+2021-03-30 02:29:54,162 - INFO - Process 0	epoch[8][500/1336]	time 0.910 (0.978)	data 0.000 (0.063)	loss 1.9770 (1.8950)	rank loss 1.6480 (1.5381)	offs loss 0.3290 (0.356895)	lr 0.00009843
+2021-03-30 02:31:25,946 - INFO - Process 0	epoch[8][600/1336]	time 0.894 (0.968)	data 0.000 (0.053)	loss 1.6978 (1.8968)	rank loss 1.4036 (1.5400)	offs loss 0.2942 (0.356757)	lr 0.00009843
+2021-03-30 02:32:57,352 - INFO - Process 0	epoch[8][700/1336]	time 0.907 (0.960)	data 0.000 (0.045)	loss 2.0726 (1.9002)	rank loss 1.7518 (1.5433)	offs loss 0.3208 (0.356941)	lr 0.00009843
+2021-03-30 02:34:29,314 - INFO - Process 0	epoch[8][800/1336]	time 0.929 (0.955)	data 0.000 (0.040)	loss 2.0145 (1.9002)	rank loss 1.7179 (1.5445)	offs loss 0.2965 (0.355660)	lr 0.00009843
+2021-03-30 02:36:01,179 - INFO - Process 0	epoch[8][900/1336]	time 0.925 (0.951)	data 0.000 (0.035)	loss 2.1569 (1.9023)	rank loss 1.8132 (1.5470)	offs loss 0.3437 (0.355302)	lr 0.00009843
+2021-03-30 02:37:33,626 - INFO - Process 0	epoch[8][1000/1336]	time 0.896 (0.948)	data 0.000 (0.032)	loss 1.8813 (1.9033)	rank loss 1.4491 (1.5490)	offs loss 0.4322 (0.354253)	lr 0.00009843
+2021-03-30 02:39:05,565 - INFO - Process 0	epoch[8][1100/1336]	time 0.914 (0.946)	data 0.000 (0.029)	loss 1.5465 (1.9053)	rank loss 1.1781 (1.5505)	offs loss 0.3684 (0.354827)	lr 0.00009843
+2021-03-30 02:40:37,412 - INFO - Process 0	epoch[8][1200/1336]	time 0.903 (0.944)	data 0.000 (0.027)	loss 2.2679 (1.9081)	rank loss 1.8429 (1.5538)	offs loss 0.4250 (0.354269)	lr 0.00009843
+2021-03-30 02:42:09,062 - INFO - Process 0	epoch[8][1300/1336]	time 0.896 (0.941)	data 0.000 (0.024)	loss 1.5665 (1.9079)	rank loss 1.3260 (1.5545)	offs loss 0.2405 (0.353448)	lr 0.00009843
+2021-03-30 02:42:45,358 - INFO - evaluating...
+2021-03-30 02:43:21,593 - INFO - Process 0	epoch[8][100/149]	time 0.245 (0.362)	data 0.000 (0.111)	loss 2.8418 (2.8916)	rank loss 2.3847 (2.4065)	offs loss 0.4571 (0.485109)	lr 0.00009649
+2021-03-30 02:43:34,762 - INFO - train...
+2021-03-30 02:45:38,832 - INFO - Process 0	epoch[9][100/1336]	time 0.902 (1.241)	data 0.000 (0.323)	loss 1.8846 (1.7100)	rank loss 1.5677 (1.3836)	offs loss 0.3168 (0.326404)	lr 0.00009649
+2021-03-30 02:47:10,391 - INFO - Process 0	epoch[9][200/1336]	time 0.903 (1.078)	data 0.000 (0.162)	loss 2.0778 (1.7169)	rank loss 1.6443 (1.3895)	offs loss 0.4335 (0.327451)	lr 0.00009649
+2021-03-30 02:48:42,439 - INFO - Process 0	epoch[9][300/1336]	time 0.897 (1.026)	data 0.000 (0.108)	loss 1.7893 (1.7245)	rank loss 1.4535 (1.3984)	offs loss 0.3358 (0.326108)	lr 0.00009649
+2021-03-30 02:50:14,427 - INFO - Process 0	epoch[9][400/1336]	time 0.918 (0.999)	data 0.000 (0.081)	loss 1.8245 (1.7269)	rank loss 1.4883 (1.4021)	offs loss 0.3362 (0.324785)	lr 0.00009649
+2021-03-30 02:51:46,098 - INFO - Process 0	epoch[9][500/1336]	time 0.913 (0.983)	data 0.003 (0.065)	loss 1.6335 (1.7335)	rank loss 1.3626 (1.4079)	offs loss 0.2710 (0.325609)	lr 0.00009649
+2021-03-30 02:53:18,068 - INFO - Process 0	epoch[9][600/1336]	time 0.934 (0.972)	data 0.000 (0.054)	loss 1.9641 (1.7366)	rank loss 1.6686 (1.4102)	offs loss 0.2955 (0.326423)	lr 0.00009649
+2021-03-30 02:54:50,127 - INFO - Process 0	epoch[9][700/1336]	time 0.905 (0.965)	data 0.000 (0.046)	loss 1.4368 (1.7458)	rank loss 1.1464 (1.4184)	offs loss 0.2904 (0.327400)	lr 0.00009649
+2021-03-30 02:56:21,773 - INFO - Process 0	epoch[9][800/1336]	time 0.881 (0.959)	data 0.000 (0.041)	loss 1.9045 (1.7513)	rank loss 1.6011 (1.4235)	offs loss 0.3034 (0.327819)	lr 0.00009649
+2021-03-30 02:57:53,352 - INFO - Process 0	epoch[9][900/1336]	time 0.901 (0.954)	data 0.000 (0.036)	loss 2.0106 (1.7490)	rank loss 1.6278 (1.4214)	offs loss 0.3828 (0.327562)	lr 0.00009649
+2021-03-30 02:59:24,882 - INFO - Process 0	epoch[9][1000/1336]	time 0.905 (0.950)	data 0.000 (0.032)	loss 1.6782 (1.7549)	rank loss 1.3403 (1.4264)	offs loss 0.3378 (0.328524)	lr 0.00009649
+2021-03-30 03:00:56,524 - INFO - Process 0	epoch[9][1100/1336]	time 0.918 (0.947)	data 0.000 (0.030)	loss 2.4762 (1.7605)	rank loss 2.0440 (1.4310)	offs loss 0.4322 (0.329464)	lr 0.00009649
+2021-03-30 03:02:28,292 - INFO - Process 0	epoch[9][1200/1336]	time 0.899 (0.945)	data 0.000 (0.027)	loss 1.5663 (1.7623)	rank loss 1.2173 (1.4328)	offs loss 0.3490 (0.329548)	lr 0.00009649
+2021-03-30 03:04:00,240 - INFO - Process 0	epoch[9][1300/1336]	time 0.915 (0.943)	data 0.000 (0.025)	loss 1.9847 (1.7644)	rank loss 1.6165 (1.4351)	offs loss 0.3682 (0.329382)	lr 0.00009649
+2021-03-30 03:04:36,701 - INFO - saving model to 10
+2021-03-30 03:04:39,143 - INFO - evaluating...
+2021-03-30 03:05:35,490 - INFO - Process 0	epoch[9][100/149]	time 0.261 (0.563)	data 0.000 (0.163)	loss 3.0486 (2.9526)	rank loss 2.5987 (2.4761)	offs loss 0.4499 (0.476498)	lr 0.00009382
+2021-03-30 03:05:48,629 - INFO - train...
+2021-03-30 03:07:51,288 - INFO - Process 0	epoch[10][100/1336]	time 0.962 (1.227)	data 0.000 (0.318)	loss 1.5616 (1.6097)	rank loss 1.2579 (1.3072)	offs loss 0.3037 (0.302565)	lr 0.00009382
+2021-03-30 03:09:22,979 - INFO - Process 0	epoch[10][200/1336]	time 0.901 (1.072)	data 0.000 (0.159)	loss 1.4781 (1.6038)	rank loss 1.1803 (1.3032)	offs loss 0.2977 (0.300633)	lr 0.00009382
+2021-03-30 03:10:55,211 - INFO - Process 0	epoch[10][300/1336]	time 0.944 (1.022)	data 0.000 (0.106)	loss 1.7028 (1.6038)	rank loss 1.3764 (1.3010)	offs loss 0.3265 (0.302795)	lr 0.00009382
+2021-03-30 03:12:27,206 - INFO - Process 0	epoch[10][400/1336]	time 0.906 (0.996)	data 0.000 (0.080)	loss 1.6605 (1.6205)	rank loss 1.2714 (1.3119)	offs loss 0.3891 (0.308520)	lr 0.00009382
+2021-03-30 03:13:59,073 - INFO - Process 0	epoch[10][500/1336]	time 0.909 (0.981)	data 0.000 (0.064)	loss 1.6208 (1.6231)	rank loss 1.3407 (1.3168)	offs loss 0.2801 (0.306321)	lr 0.00009382
+2021-03-30 03:15:30,906 - INFO - Process 0	epoch[10][600/1336]	time 0.910 (0.970)	data 0.000 (0.053)	loss 1.3552 (1.6275)	rank loss 1.0665 (1.3190)	offs loss 0.2887 (0.308493)	lr 0.00009382
+2021-03-30 03:17:02,831 - INFO - Process 0	epoch[10][700/1336]	time 0.938 (0.963)	data 0.000 (0.046)	loss 1.4264 (1.6299)	rank loss 1.1424 (1.3214)	offs loss 0.2840 (0.308452)	lr 0.00009382
+2021-03-30 03:18:35,169 - INFO - Process 0	epoch[10][800/1336]	time 0.974 (0.958)	data 0.000 (0.040)	loss 1.7404 (1.6290)	rank loss 1.4097 (1.3204)	offs loss 0.3307 (0.308631)	lr 0.00009382
+2021-03-30 03:20:06,672 - INFO - Process 0	epoch[10][900/1336]	time 0.915 (0.953)	data 0.000 (0.035)	loss 1.6147 (1.6312)	rank loss 1.3283 (1.3227)	offs loss 0.2864 (0.308513)	lr 0.00009382
+2021-03-30 03:21:38,570 - INFO - Process 0	epoch[10][1000/1336]	time 0.925 (0.950)	data 0.000 (0.032)	loss 1.4616 (1.6372)	rank loss 1.2144 (1.3284)	offs loss 0.2472 (0.308823)	lr 0.00009382
+2021-03-30 03:23:10,731 - INFO - Process 0	epoch[10][1100/1336]	time 0.926 (0.947)	data 0.000 (0.029)	loss 1.2173 (1.6382)	rank loss 0.9502 (1.3291)	offs loss 0.2671 (0.309156)	lr 0.00009382
+2021-03-30 03:24:42,466 - INFO - Process 0	epoch[10][1200/1336]	time 0.910 (0.945)	data 0.000 (0.027)	loss 1.6385 (1.6380)	rank loss 1.3716 (1.3290)	offs loss 0.2669 (0.309044)	lr 0.00009382
+2021-03-30 03:26:14,785 - INFO - Process 0	epoch[10][1300/1336]	time 0.923 (0.943)	data 0.000 (0.025)	loss 1.3591 (1.6420)	rank loss 1.1028 (1.3329)	offs loss 0.2562 (0.309044)	lr 0.00009382
+2021-03-30 03:26:52,111 - INFO - evaluating...
+2021-03-30 03:27:33,409 - INFO - Process 0	epoch[10][100/149]	time 0.243 (0.413)	data 0.000 (0.147)	loss 2.8126 (3.0023)	rank loss 2.2581 (2.5252)	offs loss 0.5545 (0.477034)	lr 0.00009045
+2021-03-30 03:27:46,388 - INFO - train...
+2021-03-30 03:29:51,315 - INFO - Process 0	epoch[11][100/1336]	time 0.915 (1.249)	data 0.000 (0.314)	loss 1.2876 (1.4755)	rank loss 1.0176 (1.1925)	offs loss 0.2700 (0.283013)	lr 0.00009045
+2021-03-30 03:31:23,131 - INFO - Process 0	epoch[11][200/1336]	time 0.934 (1.084)	data 0.000 (0.157)	loss 1.4404 (1.4745)	rank loss 1.1210 (1.1907)	offs loss 0.3194 (0.283884)	lr 0.00009045
+2021-03-30 03:32:54,658 - INFO - Process 0	epoch[11][300/1336]	time 0.924 (1.028)	data 0.000 (0.105)	loss 1.6672 (1.4770)	rank loss 1.3548 (1.1901)	offs loss 0.3124 (0.286871)	lr 0.00009045
+2021-03-30 03:34:26,314 - INFO - Process 0	epoch[11][400/1336]	time 0.929 (1.000)	data 0.000 (0.079)	loss 1.5501 (1.4887)	rank loss 1.2148 (1.2007)	offs loss 0.3353 (0.287937)	lr 0.00009045
+2021-03-30 03:35:57,931 - INFO - Process 0	epoch[11][500/1336]	time 0.920 (0.983)	data 0.000 (0.063)	loss 1.7428 (1.5066)	rank loss 1.3804 (1.2169)	offs loss 0.3624 (0.289745)	lr 0.00009045
+2021-03-30 03:37:29,729 - INFO - Process 0	epoch[11][600/1336]	time 0.904 (0.972)	data 0.000 (0.052)	loss 1.4492 (1.5099)	rank loss 1.1739 (1.2220)	offs loss 0.2753 (0.287898)	lr 0.00009045
+2021-03-30 03:39:01,959 - INFO - Process 0	epoch[11][700/1336]	time 0.915 (0.965)	data 0.000 (0.045)	loss 1.8998 (1.5145)	rank loss 1.5656 (1.2258)	offs loss 0.3342 (0.288728)	lr 0.00009045
+2021-03-30 03:40:34,022 - INFO - Process 0	epoch[11][800/1336]	time 0.939 (0.960)	data 0.000 (0.039)	loss 1.4913 (1.5180)	rank loss 1.2016 (1.2283)	offs loss 0.2897 (0.289695)	lr 0.00009045
+2021-03-30 03:42:05,839 - INFO - Process 0	epoch[11][900/1336]	time 0.910 (0.955)	data 0.000 (0.035)	loss 1.3363 (1.5231)	rank loss 1.0045 (1.2327)	offs loss 0.3318 (0.290439)	lr 0.00009045
+2021-03-30 03:43:37,932 - INFO - Process 0	epoch[11][1000/1336]	time 0.922 (0.952)	data 0.000 (0.032)	loss 1.9013 (1.5257)	rank loss 1.5233 (1.2351)	offs loss 0.3780 (0.290505)	lr 0.00009045
+2021-03-30 03:45:09,716 - INFO - Process 0	epoch[11][1100/1336]	time 0.921 (0.948)	data 0.000 (0.029)	loss 1.9576 (1.5271)	rank loss 1.6370 (1.2366)	offs loss 0.3206 (0.290482)	lr 0.00009045
+2021-03-30 03:46:41,892 - INFO - Process 0	epoch[11][1200/1336]	time 0.907 (0.946)	data 0.000 (0.026)	loss 1.4906 (1.5295)	rank loss 1.2301 (1.2391)	offs loss 0.2605 (0.290323)	lr 0.00009045
+2021-03-30 03:48:13,824 - INFO - Process 0	epoch[11][1300/1336]	time 0.924 (0.944)	data 0.000 (0.024)	loss 1.6241 (1.5313)	rank loss 1.2892 (1.2409)	offs loss 0.3349 (0.290384)	lr 0.00009045
+2021-03-30 03:48:50,579 - INFO - evaluating...
+2021-03-30 03:49:26,993 - INFO - Process 0	epoch[11][100/149]	time 0.258 (0.364)	data 0.000 (0.111)	loss 3.1671 (3.0132)	rank loss 2.6928 (2.5293)	offs loss 0.4743 (0.483831)	lr 0.00008645
+2021-03-30 03:49:40,183 - INFO - train...
+2021-03-30 03:51:42,058 - INFO - Process 0	epoch[12][100/1336]	time 0.925 (1.219)	data 0.000 (0.312)	loss 1.3040 (1.3807)	rank loss 1.0505 (1.1076)	offs loss 0.2534 (0.273092)	lr 0.00008645
+2021-03-30 03:53:13,717 - INFO - Process 0	epoch[12][200/1336]	time 0.883 (1.068)	data 0.000 (0.156)	loss 1.3208 (1.4055)	rank loss 1.0433 (1.1308)	offs loss 0.2775 (0.274772)	lr 0.00008645
+2021-03-30 03:54:45,700 - INFO - Process 0	epoch[12][300/1336]	time 0.911 (1.018)	data 0.000 (0.104)	loss 1.5624 (1.3979)	rank loss 1.2488 (1.1239)	offs loss 0.3136 (0.274026)	lr 0.00008645
+2021-03-30 03:56:17,476 - INFO - Process 0	epoch[12][400/1336]	time 0.921 (0.993)	data 0.000 (0.078)	loss 1.6829 (1.3967)	rank loss 1.3518 (1.1234)	offs loss 0.3311 (0.273369)	lr 0.00008645
+2021-03-30 03:57:49,407 - INFO - Process 0	epoch[12][500/1336]	time 0.927 (0.978)	data 0.000 (0.062)	loss 1.4056 (1.4035)	rank loss 1.1900 (1.1300)	offs loss 0.2156 (0.273575)	lr 0.00008645
+2021-03-30 03:59:21,345 - INFO - Process 0	epoch[12][600/1336]	time 0.931 (0.969)	data 0.000 (0.052)	loss 1.4731 (1.4146)	rank loss 1.1835 (1.1394)	offs loss 0.2896 (0.275175)	lr 0.00008645
+2021-03-30 04:00:53,027 - INFO - Process 0	epoch[12][700/1336]	time 0.966 (0.961)	data 0.000 (0.045)	loss 1.5909 (1.4126)	rank loss 1.3128 (1.1379)	offs loss 0.2781 (0.274697)	lr 0.00008645
+2021-03-30 04:02:25,276 - INFO - Process 0	epoch[12][800/1336]	time 0.928 (0.956)	data 0.000 (0.039)	loss 1.7737 (1.4114)	rank loss 1.4809 (1.1377)	offs loss 0.2928 (0.273722)	lr 0.00008645
+2021-03-30 04:03:57,604 - INFO - Process 0	epoch[12][900/1336]	time 0.897 (0.953)	data 0.000 (0.035)	loss 1.1882 (1.4152)	rank loss 0.9393 (1.1418)	offs loss 0.2489 (0.273402)	lr 0.00008645
+2021-03-30 04:05:29,265 - INFO - Process 0	epoch[12][1000/1336]	time 0.897 (0.949)	data 0.000 (0.031)	loss 1.4147 (1.4160)	rank loss 1.1791 (1.1433)	offs loss 0.2356 (0.272633)	lr 0.00008645
+2021-03-30 04:07:01,037 - INFO - Process 0	epoch[12][1100/1336]	time 0.913 (0.946)	data 0.000 (0.029)	loss 1.6252 (1.4167)	rank loss 1.3374 (1.1441)	offs loss 0.2878 (0.272538)	lr 0.00008645
+2021-03-30 04:08:33,156 - INFO - Process 0	epoch[12][1200/1336]	time 0.947 (0.944)	data 0.000 (0.026)	loss 1.7435 (1.4190)	rank loss 1.4807 (1.1460)	offs loss 0.2628 (0.272943)	lr 0.00008645
+2021-03-30 04:10:04,835 - INFO - Process 0	epoch[12][1300/1336]	time 0.917 (0.942)	data 0.000 (0.024)	loss 1.5301 (1.4197)	rank loss 1.1352 (1.1465)	offs loss 0.3949 (0.273223)	lr 0.00008645
+2021-03-30 04:10:41,919 - INFO - evaluating...
+2021-03-30 04:11:17,951 - INFO - Process 0	epoch[12][100/149]	time 0.281 (0.360)	data 0.000 (0.108)	loss 3.0649 (3.1098)	rank loss 2.6502 (2.6258)	offs loss 0.4147 (0.484040)	lr 0.00008187
+2021-03-30 04:11:31,156 - INFO - train...
+2021-03-30 04:13:35,998 - INFO - Process 0	epoch[13][100/1336]	time 0.938 (1.248)	data 0.000 (0.314)	loss 1.3276 (1.2843)	rank loss 1.0477 (1.0338)	offs loss 0.2798 (0.250547)	lr 0.00008187
+2021-03-30 04:15:07,445 - INFO - Process 0	epoch[13][200/1336]	time 0.891 (1.081)	data 0.000 (0.157)	loss 1.1567 (1.2921)	rank loss 0.8779 (1.0363)	offs loss 0.2789 (0.255748)	lr 0.00008187
+2021-03-30 04:16:39,238 - INFO - Process 0	epoch[13][300/1336]	time 0.925 (1.027)	data 0.000 (0.105)	loss 1.0138 (1.2901)	rank loss 0.7679 (1.0352)	offs loss 0.2459 (0.254968)	lr 0.00008187
+2021-03-30 04:18:11,159 - INFO - Process 0	epoch[13][400/1336]	time 0.917 (1.000)	data 0.000 (0.079)	loss 1.3032 (1.2951)	rank loss 1.1072 (1.0402)	offs loss 0.1960 (0.254923)	lr 0.00008187
+2021-03-30 04:19:43,212 - INFO - Process 0	epoch[13][500/1336]	time 0.927 (0.984)	data 0.000 (0.063)	loss 1.6972 (1.2975)	rank loss 1.4595 (1.0434)	offs loss 0.2376 (0.254170)	lr 0.00008187
+2021-03-30 04:21:15,539 - INFO - Process 0	epoch[13][600/1336]	time 0.943 (0.974)	data 0.000 (0.053)	loss 1.2431 (1.3007)	rank loss 0.9368 (1.0464)	offs loss 0.3063 (0.254278)	lr 0.00008187
+2021-03-30 04:22:47,414 - INFO - Process 0	epoch[13][700/1336]	time 0.952 (0.966)	data 0.000 (0.045)	loss 1.2081 (1.3029)	rank loss 0.9309 (1.0480)	offs loss 0.2772 (0.254897)	lr 0.00008187
+2021-03-30 04:24:19,260 - INFO - Process 0	epoch[13][800/1336]	time 0.913 (0.960)	data 0.000 (0.039)	loss 1.5183 (1.3060)	rank loss 1.2256 (1.0505)	offs loss 0.2927 (0.255484)	lr 0.00008187
+2021-03-30 04:25:50,863 - INFO - Process 0	epoch[13][900/1336]	time 0.942 (0.955)	data 0.000 (0.035)	loss 1.3970 (1.3110)	rank loss 1.1260 (1.0553)	offs loss 0.2710 (0.255732)	lr 0.00008187
+2021-03-30 04:27:22,942 - INFO - Process 0	epoch[13][1000/1336]	time 0.939 (0.952)	data 0.000 (0.032)	loss 1.4339 (1.3138)	rank loss 1.2048 (1.0582)	offs loss 0.2291 (0.255636)	lr 0.00008187
+2021-03-30 04:28:54,731 - INFO - Process 0	epoch[13][1100/1336]	time 0.896 (0.949)	data 0.000 (0.029)	loss 1.5524 (1.3177)	rank loss 1.2748 (1.0617)	offs loss 0.2777 (0.256055)	lr 0.00008187
+2021-03-30 04:30:26,861 - INFO - Process 0	epoch[13][1200/1336]	time 0.928 (0.946)	data 0.000 (0.026)	loss 1.2263 (1.3196)	rank loss 0.9971 (1.0631)	offs loss 0.2292 (0.256450)	lr 0.00008187
+2021-03-30 04:31:58,890 - INFO - Process 0	epoch[13][1300/1336]	time 0.906 (0.944)	data 0.000 (0.024)	loss 1.4646 (1.3211)	rank loss 1.1912 (1.0641)	offs loss 0.2734 (0.256965)	lr 0.00008187
+2021-03-30 04:32:35,615 - INFO - evaluating...
+2021-03-30 04:33:15,192 - INFO - Process 0	epoch[13][100/149]	time 0.242 (0.396)	data 0.000 (0.133)	loss 3.0220 (3.1655)	rank loss 2.5915 (2.6940)	offs loss 0.4305 (0.471496)	lr 0.00007679
+2021-03-30 04:33:28,244 - INFO - train...
+2021-03-30 04:35:33,757 - INFO - Process 0	epoch[14][100/1336]	time 0.952 (1.255)	data 0.000 (0.318)	loss 1.1936 (1.2194)	rank loss 0.9527 (0.9772)	offs loss 0.2410 (0.242200)	lr 0.00007679
+2021-03-30 04:37:05,598 - INFO - Process 0	epoch[14][200/1336]	time 0.914 (1.087)	data 0.000 (0.159)	loss 1.3687 (1.2076)	rank loss 1.0548 (0.9653)	offs loss 0.3139 (0.242334)	lr 0.00007679
+2021-03-30 04:38:37,964 - INFO - Process 0	epoch[14][300/1336]	time 0.929 (1.032)	data 0.000 (0.106)	loss 1.1050 (1.2101)	rank loss 0.9097 (0.9640)	offs loss 0.1953 (0.246146)	lr 0.00007679
+2021-03-30 04:40:10,020 - INFO - Process 0	epoch[14][400/1336]	time 0.905 (1.004)	data 0.000 (0.080)	loss 1.4894 (1.2134)	rank loss 1.1622 (0.9677)	offs loss 0.3272 (0.245720)	lr 0.00007679
+2021-03-30 04:41:41,505 - INFO - Process 0	epoch[14][500/1336]	time 0.926 (0.987)	data 0.000 (0.064)	loss 0.9984 (1.2087)	rank loss 0.7986 (0.9638)	offs loss 0.1999 (0.244894)	lr 0.00007679
+2021-03-30 04:43:12,867 - INFO - Process 0	epoch[14][600/1336]	time 0.906 (0.974)	data 0.000 (0.053)	loss 1.0760 (1.2164)	rank loss 0.8127 (0.9718)	offs loss 0.2633 (0.244561)	lr 0.00007679
+2021-03-30 04:44:44,828 - INFO - Process 0	epoch[14][700/1336]	time 0.912 (0.967)	data 0.000 (0.046)	loss 1.2953 (1.2178)	rank loss 1.0862 (0.9738)	offs loss 0.2091 (0.243921)	lr 0.00007679
+2021-03-30 04:46:16,955 - INFO - Process 0	epoch[14][800/1336]	time 0.918 (0.961)	data 0.000 (0.040)	loss 1.2695 (1.2181)	rank loss 0.9864 (0.9746)	offs loss 0.2831 (0.243523)	lr 0.00007679
+2021-03-30 04:47:48,814 - INFO - Process 0	epoch[14][900/1336]	time 0.938 (0.956)	data 0.000 (0.036)	loss 1.1005 (1.2215)	rank loss 0.8636 (0.9780)	offs loss 0.2369 (0.243553)	lr 0.00007679
+2021-03-30 04:49:20,808 - INFO - Process 0	epoch[14][1000/1336]	time 0.907 (0.953)	data 0.000 (0.032)	loss 0.9570 (1.2230)	rank loss 0.7429 (0.9803)	offs loss 0.2142 (0.242750)	lr 0.00007679
+2021-03-30 04:50:52,854 - INFO - Process 0	epoch[14][1100/1336]	time 0.923 (0.950)	data 0.000 (0.029)	loss 1.3062 (1.2294)	rank loss 1.0840 (0.9860)	offs loss 0.2222 (0.243329)	lr 0.00007679
+2021-03-30 04:52:24,823 - INFO - Process 0	epoch[14][1200/1336]	time 0.917 (0.947)	data 0.000 (0.027)	loss 1.3320 (1.2331)	rank loss 1.1314 (0.9897)	offs loss 0.2006 (0.243419)	lr 0.00007679
+2021-03-30 04:53:56,692 - INFO - Process 0	epoch[14][1300/1336]	time 0.894 (0.945)	data 0.000 (0.025)	loss 1.1386 (1.2355)	rank loss 0.9575 (0.9922)	offs loss 0.1811 (0.243302)	lr 0.00007679
+2021-03-30 04:54:33,023 - INFO - saving model to 15
+2021-03-30 04:54:34,360 - INFO - evaluating...
+2021-03-30 04:55:11,616 - INFO - Process 0	epoch[14][100/149]	time 0.292 (0.373)	data 0.000 (0.113)	loss 3.0415 (3.1960)	rank loss 2.5220 (2.7303)	offs loss 0.5196 (0.465762)	lr 0.00007129
+2021-03-30 04:55:24,768 - INFO - train...
+2021-03-30 04:57:29,431 - INFO - Process 0	epoch[15][100/1336]	time 0.915 (1.247)	data 0.000 (0.316)	loss 1.2592 (1.1148)	rank loss 0.9684 (0.8868)	offs loss 0.2908 (0.228022)	lr 0.00007129
+2021-03-30 04:59:01,244 - INFO - Process 0	epoch[15][200/1336]	time 0.903 (1.082)	data 0.000 (0.158)	loss 1.0525 (1.1328)	rank loss 0.8224 (0.9066)	offs loss 0.2301 (0.226210)	lr 0.00007129
+2021-03-30 05:00:32,961 - INFO - Process 0	epoch[15][300/1336]	time 0.890 (1.027)	data 0.000 (0.105)	loss 0.9920 (1.1414)	rank loss 0.7308 (0.9136)	offs loss 0.2612 (0.227773)	lr 0.00007129
+2021-03-30 05:02:04,258 - INFO - Process 0	epoch[15][400/1336]	time 0.903 (0.999)	data 0.000 (0.079)	loss 1.0320 (1.1378)	rank loss 0.8136 (0.9099)	offs loss 0.2184 (0.227878)	lr 0.00007129
+2021-03-30 05:03:36,045 - INFO - Process 0	epoch[15][500/1336]	time 0.908 (0.983)	data 0.000 (0.063)	loss 1.1999 (1.1413)	rank loss 0.8961 (0.9133)	offs loss 0.3038 (0.227957)	lr 0.00007129
+2021-03-30 05:05:07,744 - INFO - Process 0	epoch[15][600/1336]	time 0.919 (0.972)	data 0.000 (0.053)	loss 1.1310 (1.1463)	rank loss 0.8403 (0.9175)	offs loss 0.2908 (0.228794)	lr 0.00007129
+2021-03-30 05:06:39,735 - INFO - Process 0	epoch[15][700/1336]	time 0.918 (0.964)	data 0.000 (0.045)	loss 1.2883 (1.1451)	rank loss 1.0241 (0.9176)	offs loss 0.2641 (0.227500)	lr 0.00007129
+2021-03-30 05:08:11,634 - INFO - Process 0	epoch[15][800/1336]	time 0.943 (0.959)	data 0.000 (0.040)	loss 1.0212 (1.1490)	rank loss 0.7979 (0.9211)	offs loss 0.2233 (0.227876)	lr 0.00007129
+2021-03-30 05:09:43,350 - INFO - Process 0	epoch[15][900/1336]	time 0.901 (0.954)	data 0.000 (0.035)	loss 1.0963 (1.1527)	rank loss 0.8676 (0.9244)	offs loss 0.2287 (0.228241)	lr 0.00007129
+2021-03-30 05:11:15,778 - INFO - Process 0	epoch[15][1000/1336]	time 0.895 (0.951)	data 0.000 (0.032)	loss 0.9445 (1.1525)	rank loss 0.7543 (0.9240)	offs loss 0.1903 (0.228465)	lr 0.00007129
+2021-03-30 05:12:48,017 - INFO - Process 0	epoch[15][1100/1336]	time 0.911 (0.948)	data 0.000 (0.029)	loss 1.1348 (1.1541)	rank loss 0.9087 (0.9256)	offs loss 0.2261 (0.228486)	lr 0.00007129
+2021-03-30 05:14:20,011 - INFO - Process 0	epoch[15][1200/1336]	time 0.920 (0.946)	data 0.000 (0.026)	loss 1.0785 (1.1555)	rank loss 0.8675 (0.9270)	offs loss 0.2111 (0.228540)	lr 0.00007129
+2021-03-30 05:15:51,543 - INFO - Process 0	epoch[15][1300/1336]	time 0.880 (0.944)	data 0.000 (0.024)	loss 0.8703 (1.1567)	rank loss 0.6722 (0.9285)	offs loss 0.1981 (0.228115)	lr 0.00007129
+2021-03-30 05:16:28,230 - INFO - evaluating...
+2021-03-30 05:17:04,920 - INFO - Process 0	epoch[15][100/149]	time 0.240 (0.367)	data 0.000 (0.118)	loss 3.0163 (3.2943)	rank loss 2.5165 (2.8193)	offs loss 0.4998 (0.475010)	lr 0.00006545
+2021-03-30 05:17:18,002 - INFO - train...
+2021-03-30 05:19:22,300 - INFO - Process 0	epoch[16][100/1336]	time 0.889 (1.243)	data 0.000 (0.321)	loss 0.9234 (1.0900)	rank loss 0.7823 (0.8701)	offs loss 0.1411 (0.219877)	lr 0.00006545
+2021-03-30 05:20:54,381 - INFO - Process 0	epoch[16][200/1336]	time 1.024 (1.082)	data 0.000 (0.161)	loss 1.0588 (1.0745)	rank loss 0.8408 (0.8575)	offs loss 0.2180 (0.216999)	lr 0.00006545
+2021-03-30 05:22:26,062 - INFO - Process 0	epoch[16][300/1336]	time 0.921 (1.027)	data 0.000 (0.107)	loss 0.8553 (1.0694)	rank loss 0.6631 (0.8540)	offs loss 0.1922 (0.215413)	lr 0.00006545
+2021-03-30 05:23:58,032 - INFO - Process 0	epoch[16][400/1336]	time 0.903 (1.000)	data 0.000 (0.080)	loss 1.0487 (1.0616)	rank loss 0.8564 (0.8485)	offs loss 0.1922 (0.213078)	lr 0.00006545
+2021-03-30 05:25:29,905 - INFO - Process 0	epoch[16][500/1336]	time 0.914 (0.984)	data 0.000 (0.064)	loss 0.9339 (1.0636)	rank loss 0.7037 (0.8491)	offs loss 0.2302 (0.214522)	lr 0.00006545
+2021-03-30 05:27:01,676 - INFO - Process 0	epoch[16][600/1336]	time 0.915 (0.973)	data 0.000 (0.054)	loss 1.2545 (1.0673)	rank loss 1.0508 (0.8524)	offs loss 0.2037 (0.214906)	lr 0.00006545
+2021-03-30 05:28:34,039 - INFO - Process 0	epoch[16][700/1336]	time 0.905 (0.966)	data 0.000 (0.046)	loss 1.1529 (1.0701)	rank loss 0.9064 (0.8548)	offs loss 0.2465 (0.215264)	lr 0.00006545
+2021-03-30 05:30:06,265 - INFO - Process 0	epoch[16][800/1336]	time 0.913 (0.960)	data 0.000 (0.040)	loss 1.3567 (1.0723)	rank loss 1.1676 (0.8565)	offs loss 0.1891 (0.215764)	lr 0.00006545
+2021-03-30 05:31:37,525 - INFO - Process 0	epoch[16][900/1336]	time 0.943 (0.955)	data 0.000 (0.036)	loss 0.9343 (1.0727)	rank loss 0.7590 (0.8570)	offs loss 0.1753 (0.215645)	lr 0.00006545
+2021-03-30 05:33:09,334 - INFO - Process 0	epoch[16][1000/1336]	time 0.885 (0.951)	data 0.000 (0.032)	loss 1.1277 (1.0738)	rank loss 0.9204 (0.8582)	offs loss 0.2073 (0.215595)	lr 0.00006545
+2021-03-30 05:34:41,030 - INFO - Process 0	epoch[16][1100/1336]	time 0.961 (0.948)	data 0.000 (0.029)	loss 1.1563 (1.0783)	rank loss 0.9544 (0.8627)	offs loss 0.2019 (0.215630)	lr 0.00006545
+2021-03-30 05:36:12,978 - INFO - Process 0	epoch[16][1200/1336]	time 0.920 (0.946)	data 0.000 (0.027)	loss 1.1803 (1.0800)	rank loss 0.9709 (0.8645)	offs loss 0.2094 (0.215562)	lr 0.00006545
+2021-03-30 05:37:45,037 - INFO - Process 0	epoch[16][1300/1336]	time 0.892 (0.944)	data 0.000 (0.025)	loss 0.8937 (1.0802)	rank loss 0.7187 (0.8649)	offs loss 0.1749 (0.215304)	lr 0.00006545
+2021-03-30 05:38:22,269 - INFO - evaluating...
+2021-03-30 05:38:58,481 - INFO - Process 0	epoch[16][100/149]	time 0.252 (0.362)	data 0.000 (0.113)	loss 3.3612 (3.3623)	rank loss 2.8421 (2.8843)	offs loss 0.5191 (0.478010)	lr 0.00005937
+2021-03-30 05:39:11,584 - INFO - train...
+2021-03-30 05:41:14,002 - INFO - Process 0	epoch[17][100/1336]	time 0.952 (1.224)	data 0.000 (0.314)	loss 1.2104 (1.0053)	rank loss 0.9784 (0.8105)	offs loss 0.2320 (0.194817)	lr 0.00005937
+2021-03-30 05:42:46,490 - INFO - Process 0	epoch[17][200/1336]	time 0.954 (1.075)	data 0.002 (0.157)	loss 0.9272 (1.0027)	rank loss 0.7152 (0.8062)	offs loss 0.2120 (0.196456)	lr 0.00005937
+2021-03-30 05:44:18,480 - INFO - Process 0	epoch[17][300/1336]	time 0.932 (1.023)	data 0.000 (0.105)	loss 0.8984 (0.9978)	rank loss 0.7264 (0.7993)	offs loss 0.1720 (0.198515)	lr 0.00005937
+2021-03-30 05:45:49,996 - INFO - Process 0	epoch[17][400/1336]	time 0.918 (0.996)	data 0.000 (0.079)	loss 1.0906 (1.0008)	rank loss 0.8843 (0.8016)	offs loss 0.2064 (0.199216)	lr 0.00005937
+2021-03-30 05:47:22,463 - INFO - Process 0	epoch[17][500/1336]	time 0.929 (0.982)	data 0.000 (0.063)	loss 0.9915 (0.9990)	rank loss 0.7397 (0.7986)	offs loss 0.2519 (0.200385)	lr 0.00005937
+2021-03-30 05:48:54,222 - INFO - Process 0	epoch[17][600/1336]	time 0.910 (0.971)	data 0.000 (0.053)	loss 0.8122 (1.0002)	rank loss 0.6263 (0.7993)	offs loss 0.1859 (0.200843)	lr 0.00005937
+2021-03-30 05:50:26,437 - INFO - Process 0	epoch[17][700/1336]	time 0.897 (0.964)	data 0.000 (0.045)	loss 1.1404 (1.0049)	rank loss 0.9477 (0.8033)	offs loss 0.1927 (0.201605)	lr 0.00005937
+2021-03-30 05:51:58,314 - INFO - Process 0	epoch[17][800/1336]	time 0.915 (0.958)	data 0.000 (0.039)	loss 1.1601 (1.0072)	rank loss 0.9682 (0.8052)	offs loss 0.1919 (0.201994)	lr 0.00005937
+2021-03-30 05:53:30,012 - INFO - Process 0	epoch[17][900/1336]	time 0.948 (0.954)	data 0.000 (0.035)	loss 0.7561 (1.0084)	rank loss 0.5765 (0.8065)	offs loss 0.1796 (0.201871)	lr 0.00005937
+2021-03-30 05:55:01,670 - INFO - Process 0	epoch[17][1000/1336]	time 0.886 (0.950)	data 0.000 (0.032)	loss 0.9499 (1.0059)	rank loss 0.8182 (0.8042)	offs loss 0.1317 (0.201760)	lr 0.00005937
+2021-03-30 05:56:33,600 - INFO - Process 0	epoch[17][1100/1336]	time 0.911 (0.947)	data 0.000 (0.029)	loss 1.2469 (1.0051)	rank loss 0.9176 (0.8031)	offs loss 0.3294 (0.202000)	lr 0.00005937
+2021-03-30 05:58:05,991 - INFO - Process 0	epoch[17][1200/1336]	time 0.901 (0.945)	data 0.000 (0.026)	loss 0.9988 (1.0051)	rank loss 0.8362 (0.8033)	offs loss 0.1626 (0.201881)	lr 0.00005937
+2021-03-30 05:59:37,721 - INFO - Process 0	epoch[17][1300/1336]	time 0.914 (0.943)	data 0.000 (0.024)	loss 0.9296 (1.0064)	rank loss 0.7541 (0.8041)	offs loss 0.1755 (0.202274)	lr 0.00005937
+2021-03-30 06:00:14,929 - INFO - evaluating...
+2021-03-30 06:00:56,549 - INFO - Process 0	epoch[17][100/149]	time 0.245 (0.416)	data 0.000 (0.160)	loss 3.3080 (3.5550)	rank loss 2.7954 (3.0776)	offs loss 0.5126 (0.477343)	lr 0.00005314
+2021-03-30 06:01:09,588 - INFO - train...
+2021-03-30 06:03:13,895 - INFO - Process 0	epoch[18][100/1336]	time 0.931 (1.243)	data 0.000 (0.333)	loss 0.6560 (0.9475)	rank loss 0.4868 (0.7601)	offs loss 0.1692 (0.187449)	lr 0.00005314
+2021-03-30 06:04:46,784 - INFO - Process 0	epoch[18][200/1336]	time 0.915 (1.086)	data 0.000 (0.167)	loss 1.0578 (0.9548)	rank loss 0.8718 (0.7638)	offs loss 0.1859 (0.190997)	lr 0.00005314
+2021-03-30 06:06:18,392 - INFO - Process 0	epoch[18][300/1336]	time 0.917 (1.029)	data 0.000 (0.111)	loss 0.8659 (0.9603)	rank loss 0.6726 (0.7670)	offs loss 0.1933 (0.193280)	lr 0.00005314
+2021-03-30 06:07:50,371 - INFO - Process 0	epoch[18][400/1336]	time 0.921 (1.002)	data 0.000 (0.083)	loss 0.7354 (0.9621)	rank loss 0.5334 (0.7690)	offs loss 0.2020 (0.193089)	lr 0.00005314
+2021-03-30 06:09:22,342 - INFO - Process 0	epoch[18][500/1336]	time 0.930 (0.985)	data 0.000 (0.067)	loss 1.0303 (0.9608)	rank loss 0.8306 (0.7670)	offs loss 0.1997 (0.193814)	lr 0.00005314
+2021-03-30 06:10:54,641 - INFO - Process 0	epoch[18][600/1336]	time 0.911 (0.975)	data 0.000 (0.056)	loss 0.8708 (0.9583)	rank loss 0.6387 (0.7655)	offs loss 0.2321 (0.192797)	lr 0.00005314
+2021-03-30 06:12:26,766 - INFO - Process 0	epoch[18][700/1336]	time 0.921 (0.967)	data 0.000 (0.048)	loss 0.8869 (0.9555)	rank loss 0.6912 (0.7639)	offs loss 0.1957 (0.191594)	lr 0.00005314
+2021-03-30 06:13:58,676 - INFO - Process 0	epoch[18][800/1336]	time 0.895 (0.961)	data 0.000 (0.042)	loss 0.7886 (0.9538)	rank loss 0.6305 (0.7622)	offs loss 0.1581 (0.191654)	lr 0.00005314
+2021-03-30 06:15:30,632 - INFO - Process 0	epoch[18][900/1336]	time 0.922 (0.957)	data 0.000 (0.037)	loss 1.1630 (0.9504)	rank loss 0.9563 (0.7587)	offs loss 0.2067 (0.191688)	lr 0.00005314
+2021-03-30 06:17:02,409 - INFO - Process 0	epoch[18][1000/1336]	time 0.925 (0.953)	data 0.000 (0.033)	loss 0.7665 (0.9492)	rank loss 0.5809 (0.7578)	offs loss 0.1856 (0.191367)	lr 0.00005314
+2021-03-30 06:18:34,600 - INFO - Process 0	epoch[18][1100/1336]	time 0.913 (0.950)	data 0.000 (0.030)	loss 1.1115 (0.9486)	rank loss 0.9361 (0.7576)	offs loss 0.1754 (0.191031)	lr 0.00005314
+2021-03-30 06:20:06,648 - INFO - Process 0	epoch[18][1200/1336]	time 0.931 (0.948)	data 0.000 (0.028)	loss 1.0777 (0.9473)	rank loss 0.8869 (0.7566)	offs loss 0.1907 (0.190669)	lr 0.00005314
+2021-03-30 06:21:39,140 - INFO - Process 0	epoch[18][1300/1336]	time 0.903 (0.946)	data 0.000 (0.026)	loss 0.8687 (0.9479)	rank loss 0.6959 (0.7573)	offs loss 0.1728 (0.190649)	lr 0.00005314
+2021-03-30 06:22:15,592 - INFO - evaluating...
+2021-03-30 06:22:51,666 - INFO - Process 0	epoch[18][100/149]	time 0.245 (0.361)	data 0.000 (0.111)	loss 3.5742 (3.6290)	rank loss 3.0803 (3.1526)	offs loss 0.4940 (0.476323)	lr 0.00004686
+2021-03-30 06:23:04,667 - INFO - train...
+2021-03-30 06:25:08,810 - INFO - Process 0	epoch[19][100/1336]	time 0.898 (1.241)	data 0.000 (0.334)	loss 0.8279 (0.8794)	rank loss 0.6506 (0.6981)	offs loss 0.1773 (0.181264)	lr 0.00004686
+2021-03-30 06:26:41,038 - INFO - Process 0	epoch[19][200/1336]	time 0.922 (1.082)	data 0.000 (0.167)	loss 0.7858 (0.8783)	rank loss 0.5745 (0.6996)	offs loss 0.2112 (0.178644)	lr 0.00004686
+2021-03-30 06:28:13,105 - INFO - Process 0	epoch[19][300/1336]	time 0.917 (1.028)	data 0.000 (0.111)	loss 0.7027 (0.8848)	rank loss 0.5201 (0.7053)	offs loss 0.1826 (0.179531)	lr 0.00004686
+2021-03-30 06:29:45,163 - INFO - Process 0	epoch[19][400/1336]	time 0.885 (1.001)	data 0.000 (0.084)	loss 1.0191 (0.8879)	rank loss 0.8171 (0.7095)	offs loss 0.2020 (0.178392)	lr 0.00004686
+2021-03-30 06:31:17,268 - INFO - Process 0	epoch[19][500/1336]	time 0.939 (0.985)	data 0.000 (0.067)	loss 0.7986 (0.8875)	rank loss 0.5962 (0.7086)	offs loss 0.2024 (0.178834)	lr 0.00004686
+2021-03-30 06:32:48,922 - INFO - Process 0	epoch[19][600/1336]	time 0.902 (0.974)	data 0.000 (0.056)	loss 0.8935 (0.8899)	rank loss 0.7235 (0.7114)	offs loss 0.1700 (0.178478)	lr 0.00004686
+2021-03-30 06:34:20,703 - INFO - Process 0	epoch[19][700/1336]	time 0.911 (0.966)	data 0.000 (0.048)	loss 0.7393 (0.8880)	rank loss 0.5715 (0.7105)	offs loss 0.1678 (0.177465)	lr 0.00004686
+2021-03-30 06:35:52,400 - INFO - Process 0	epoch[19][800/1336]	time 0.903 (0.960)	data 0.001 (0.042)	loss 0.8127 (0.8890)	rank loss 0.6135 (0.7110)	offs loss 0.1993 (0.178011)	lr 0.00004686
+2021-03-30 06:37:24,287 - INFO - Process 0	epoch[19][900/1336]	time 0.902 (0.955)	data 0.000 (0.037)	loss 0.6240 (0.8858)	rank loss 0.4830 (0.7080)	offs loss 0.1410 (0.177725)	lr 0.00004686
+2021-03-30 06:38:57,183 - INFO - Process 0	epoch[19][1000/1336]	time 0.950 (0.953)	data 0.000 (0.034)	loss 0.8256 (0.8863)	rank loss 0.6528 (0.7082)	offs loss 0.1728 (0.178099)	lr 0.00004686
+2021-03-30 06:40:28,893 - INFO - Process 0	epoch[19][1100/1336]	time 0.892 (0.949)	data 0.000 (0.031)	loss 0.9841 (0.8858)	rank loss 0.8224 (0.7075)	offs loss 0.1618 (0.178309)	lr 0.00004686
+2021-03-30 06:42:00,868 - INFO - Process 0	epoch[19][1200/1336]	time 0.896 (0.947)	data 0.000 (0.028)	loss 0.9493 (0.8859)	rank loss 0.7875 (0.7073)	offs loss 0.1618 (0.178613)	lr 0.00004686
+2021-03-30 06:43:32,781 - INFO - Process 0	epoch[19][1300/1336]	time 0.929 (0.945)	data 0.000 (0.026)	loss 0.8783 (0.8839)	rank loss 0.7439 (0.7057)	offs loss 0.1344 (0.178247)	lr 0.00004686
+2021-03-30 06:44:09,190 - INFO - saving model to 20
+2021-03-30 06:44:12,134 - INFO - evaluating...
+2021-03-30 06:45:02,132 - INFO - Process 0	epoch[19][100/149]	time 0.252 (0.500)	data 0.000 (0.254)	loss 3.4512 (3.6575)	rank loss 2.9716 (3.1734)	offs loss 0.4795 (0.484043)	lr 0.00004063
+2021-03-30 06:45:15,104 - INFO - train...
+2021-03-30 06:47:19,710 - INFO - Process 0	epoch[20][100/1336]	time 0.900 (1.246)	data 0.000 (0.319)	loss 0.8809 (0.7925)	rank loss 0.6947 (0.6246)	offs loss 0.1862 (0.167842)	lr 0.00004063
+2021-03-30 06:48:51,420 - INFO - Process 0	epoch[20][200/1336]	time 0.908 (1.082)	data 0.000 (0.160)	loss 0.6894 (0.8110)	rank loss 0.5227 (0.6426)	offs loss 0.1667 (0.168414)	lr 0.00004063
+2021-03-30 06:50:23,136 - INFO - Process 0	epoch[20][300/1336]	time 0.895 (1.027)	data 0.000 (0.106)	loss 0.7182 (0.8194)	rank loss 0.5388 (0.6481)	offs loss 0.1794 (0.171287)	lr 0.00004063
+2021-03-30 06:51:54,841 - INFO - Process 0	epoch[20][400/1336]	time 0.889 (0.999)	data 0.000 (0.080)	loss 0.8424 (0.8176)	rank loss 0.7119 (0.6470)	offs loss 0.1306 (0.170565)	lr 0.00004063
+2021-03-30 06:53:26,809 - INFO - Process 0	epoch[20][500/1336]	time 0.928 (0.983)	data 0.000 (0.064)	loss 0.8634 (0.8220)	rank loss 0.6566 (0.6520)	offs loss 0.2067 (0.169979)	lr 0.00004063
+2021-03-30 06:54:58,886 - INFO - Process 0	epoch[20][600/1336]	time 0.966 (0.973)	data 0.000 (0.053)	loss 0.7429 (0.8196)	rank loss 0.5633 (0.6507)	offs loss 0.1796 (0.168885)	lr 0.00004063
+2021-03-30 06:56:31,583 - INFO - Process 0	epoch[20][700/1336]	time 0.920 (0.966)	data 0.000 (0.046)	loss 1.0088 (0.8208)	rank loss 0.8281 (0.6517)	offs loss 0.1807 (0.169072)	lr 0.00004063
+2021-03-30 06:58:03,461 - INFO - Process 0	epoch[20][800/1336]	time 0.889 (0.960)	data 0.000 (0.040)	loss 0.7226 (0.8223)	rank loss 0.5232 (0.6523)	offs loss 0.1994 (0.170027)	lr 0.00004063
+2021-03-30 06:59:34,887 - INFO - Process 0	epoch[20][900/1336]	time 0.899 (0.955)	data 0.000 (0.036)	loss 0.8021 (0.8236)	rank loss 0.5719 (0.6539)	offs loss 0.2303 (0.169626)	lr 0.00004063
+2021-03-30 07:01:06,780 - INFO - Process 0	epoch[20][1000/1336]	time 0.930 (0.952)	data 0.000 (0.032)	loss 1.0495 (0.8245)	rank loss 0.8820 (0.6548)	offs loss 0.1675 (0.169706)	lr 0.00004063
+2021-03-30 07:02:38,600 - INFO - Process 0	epoch[20][1100/1336]	time 0.900 (0.949)	data 0.000 (0.029)	loss 0.7545 (0.8254)	rank loss 0.6421 (0.6560)	offs loss 0.1123 (0.169395)	lr 0.00004063
+2021-03-30 07:04:10,297 - INFO - Process 0	epoch[20][1200/1336]	time 0.934 (0.946)	data 0.000 (0.027)	loss 0.8044 (0.8250)	rank loss 0.5496 (0.6554)	offs loss 0.2548 (0.169591)	lr 0.00004063
+2021-03-30 07:05:42,277 - INFO - Process 0	epoch[20][1300/1336]	time 0.938 (0.944)	data 0.000 (0.025)	loss 0.8875 (0.8261)	rank loss 0.6571 (0.6564)	offs loss 0.2304 (0.169637)	lr 0.00004063
+2021-03-30 07:06:18,813 - INFO - evaluating...
+2021-03-30 07:06:59,118 - INFO - Process 0	epoch[20][100/149]	time 0.241 (0.403)	data 0.000 (0.143)	loss 4.3144 (3.7976)	rank loss 3.7847 (3.3278)	offs loss 0.5296 (0.469742)	lr 0.00003455
+2021-03-30 07:07:12,131 - INFO - train...
+2021-03-30 07:09:17,051 - INFO - Process 0	epoch[21][100/1336]	time 0.897 (1.249)	data 0.000 (0.321)	loss 0.8146 (0.7740)	rank loss 0.6518 (0.6131)	offs loss 0.1629 (0.160860)	lr 0.00003455
+2021-03-30 07:10:49,088 - INFO - Process 0	epoch[21][200/1336]	time 0.933 (1.085)	data 0.000 (0.161)	loss 0.7159 (0.7871)	rank loss 0.5704 (0.6265)	offs loss 0.1455 (0.160579)	lr 0.00003455
+2021-03-30 07:12:21,251 - INFO - Process 0	epoch[21][300/1336]	time 0.920 (1.030)	data 0.000 (0.107)	loss 0.7797 (0.7856)	rank loss 0.6498 (0.6266)	offs loss 0.1299 (0.159097)	lr 0.00003455
+2021-03-30 07:13:53,750 - INFO - Process 0	epoch[21][400/1336]	time 0.922 (1.004)	data 0.000 (0.080)	loss 0.6795 (0.7812)	rank loss 0.5268 (0.6208)	offs loss 0.1527 (0.160409)	lr 0.00003455
+2021-03-30 07:15:25,298 - INFO - Process 0	epoch[21][500/1336]	time 1.053 (0.986)	data 0.000 (0.064)	loss 0.8495 (0.7780)	rank loss 0.6212 (0.6172)	offs loss 0.2283 (0.160774)	lr 0.00003455
+2021-03-30 07:16:57,255 - INFO - Process 0	epoch[21][600/1336]	time 0.886 (0.975)	data 0.000 (0.054)	loss 0.8245 (0.7771)	rank loss 0.6753 (0.6163)	offs loss 0.1492 (0.160763)	lr 0.00003455
+2021-03-30 07:18:29,191 - INFO - Process 0	epoch[21][700/1336]	time 0.913 (0.967)	data 0.000 (0.046)	loss 0.7652 (0.7795)	rank loss 0.5698 (0.6191)	offs loss 0.1954 (0.160354)	lr 0.00003455
+2021-03-30 07:20:00,664 - INFO - Process 0	epoch[21][800/1336]	time 0.898 (0.961)	data 0.000 (0.040)	loss 0.7303 (0.7799)	rank loss 0.5269 (0.6202)	offs loss 0.2034 (0.159614)	lr 0.00003455
+2021-03-30 07:21:32,589 - INFO - Process 0	epoch[21][900/1336]	time 0.909 (0.956)	data 0.000 (0.036)	loss 0.6449 (0.7785)	rank loss 0.4781 (0.6193)	offs loss 0.1668 (0.159214)	lr 0.00003455
+2021-03-30 07:23:04,352 - INFO - Process 0	epoch[21][1000/1336]	time 0.891 (0.952)	data 0.000 (0.032)	loss 0.8360 (0.7808)	rank loss 0.6957 (0.6210)	offs loss 0.1403 (0.159750)	lr 0.00003455
+2021-03-30 07:24:36,309 - INFO - Process 0	epoch[21][1100/1336]	time 0.931 (0.949)	data 0.001 (0.029)	loss 0.7215 (0.7800)	rank loss 0.5941 (0.6207)	offs loss 0.1274 (0.159240)	lr 0.00003455
+2021-03-30 07:26:07,872 - INFO - Process 0	epoch[21][1200/1336]	time 0.947 (0.946)	data 0.000 (0.027)	loss 0.8655 (0.7803)	rank loss 0.6162 (0.6208)	offs loss 0.2493 (0.159567)	lr 0.00003455
+2021-03-30 07:27:39,691 - INFO - Process 0	epoch[21][1300/1336]	time 0.925 (0.944)	data 0.000 (0.025)	loss 0.7224 (0.7809)	rank loss 0.5541 (0.6215)	offs loss 0.1682 (0.159384)	lr 0.00003455
+2021-03-30 07:28:16,208 - INFO - evaluating...
+2021-03-30 07:28:57,291 - INFO - Process 0	epoch[21][100/149]	time 0.248 (0.411)	data 0.000 (0.158)	loss 3.9186 (3.9225)	rank loss 3.2811 (3.4378)	offs loss 0.6374 (0.484644)	lr 0.00002871
+2021-03-30 07:29:10,334 - INFO - train...
+2021-03-30 07:31:16,819 - INFO - Process 0	epoch[22][100/1336]	time 0.933 (1.265)	data 0.000 (0.349)	loss 0.7611 (0.7305)	rank loss 0.5550 (0.5789)	offs loss 0.2060 (0.151525)	lr 0.00002871
+2021-03-30 07:32:48,517 - INFO - Process 0	epoch[22][200/1336]	time 0.866 (1.091)	data 0.000 (0.175)	loss 0.8135 (0.7335)	rank loss 0.6553 (0.5821)	offs loss 0.1582 (0.151424)	lr 0.00002871
+2021-03-30 07:34:20,542 - INFO - Process 0	epoch[22][300/1336]	time 0.900 (1.034)	data 0.000 (0.117)	loss 0.5766 (0.7329)	rank loss 0.4325 (0.5823)	offs loss 0.1440 (0.150593)	lr 0.00002871
+2021-03-30 07:35:52,829 - INFO - Process 0	epoch[22][400/1336]	time 0.896 (1.006)	data 0.000 (0.087)	loss 0.7315 (0.7333)	rank loss 0.5592 (0.5828)	offs loss 0.1723 (0.150544)	lr 0.00002871
+2021-03-30 07:37:24,545 - INFO - Process 0	epoch[22][500/1336]	time 0.920 (0.988)	data 0.000 (0.070)	loss 0.7726 (0.7341)	rank loss 0.6389 (0.5832)	offs loss 0.1337 (0.150873)	lr 0.00002871
+2021-03-30 07:38:56,244 - INFO - Process 0	epoch[22][600/1336]	time 0.927 (0.977)	data 0.000 (0.058)	loss 0.5516 (0.7334)	rank loss 0.4320 (0.5831)	offs loss 0.1197 (0.150284)	lr 0.00002871
+2021-03-30 07:40:28,002 - INFO - Process 0	epoch[22][700/1336]	time 0.899 (0.968)	data 0.000 (0.050)	loss 0.8297 (0.7313)	rank loss 0.6974 (0.5815)	offs loss 0.1323 (0.149797)	lr 0.00002871
+2021-03-30 07:42:00,012 - INFO - Process 0	epoch[22][800/1336]	time 0.890 (0.962)	data 0.000 (0.044)	loss 0.6873 (0.7278)	rank loss 0.5215 (0.5787)	offs loss 0.1658 (0.149080)	lr 0.00002871
+2021-03-30 07:43:32,083 - INFO - Process 0	epoch[22][900/1336]	time 0.905 (0.957)	data 0.000 (0.039)	loss 0.7003 (0.7283)	rank loss 0.5614 (0.5793)	offs loss 0.1388 (0.148950)	lr 0.00002871
+2021-03-30 07:45:04,005 - INFO - Process 0	epoch[22][1000/1336]	time 0.937 (0.954)	data 0.000 (0.035)	loss 0.7572 (0.7283)	rank loss 0.6375 (0.5796)	offs loss 0.1197 (0.148721)	lr 0.00002871
+2021-03-30 07:46:36,053 - INFO - Process 0	epoch[22][1100/1336]	time 0.910 (0.951)	data 0.000 (0.032)	loss 0.6717 (0.7293)	rank loss 0.5440 (0.5808)	offs loss 0.1277 (0.148544)	lr 0.00002871
+2021-03-30 07:48:08,263 - INFO - Process 0	epoch[22][1200/1336]	time 0.945 (0.948)	data 0.000 (0.029)	loss 0.5546 (0.7292)	rank loss 0.3966 (0.5807)	offs loss 0.1580 (0.148475)	lr 0.00002871
+2021-03-30 07:49:39,876 - INFO - Process 0	epoch[22][1300/1336]	time 0.915 (0.946)	data 0.000 (0.027)	loss 0.7885 (0.7285)	rank loss 0.6682 (0.5802)	offs loss 0.1204 (0.148304)	lr 0.00002871
+2021-03-30 07:50:16,785 - INFO - evaluating...
+2021-03-30 07:50:53,240 - INFO - Process 0	epoch[22][100/149]	time 0.239 (0.365)	data 0.000 (0.112)	loss 3.6570 (3.9593)	rank loss 3.0562 (3.4694)	offs loss 0.6008 (0.489834)	lr 0.00002321
+2021-03-30 07:51:06,303 - INFO - train...
+2021-03-30 07:53:11,363 - INFO - Process 0	epoch[23][100/1336]	time 0.915 (1.251)	data 0.000 (0.341)	loss 0.8478 (0.7078)	rank loss 0.6686 (0.5660)	offs loss 0.1792 (0.141805)	lr 0.00002321
+2021-03-30 07:54:43,509 - INFO - Process 0	epoch[23][200/1336]	time 0.903 (1.086)	data 0.001 (0.171)	loss 0.5207 (0.7024)	rank loss 0.3667 (0.5594)	offs loss 0.1540 (0.142972)	lr 0.00002321
+2021-03-30 07:56:15,065 - INFO - Process 0	epoch[23][300/1336]	time 0.902 (1.029)	data 0.000 (0.114)	loss 0.8186 (0.7017)	rank loss 0.6934 (0.5595)	offs loss 0.1252 (0.142157)	lr 0.00002321
+2021-03-30 07:57:47,352 - INFO - Process 0	epoch[23][400/1336]	time 0.926 (1.003)	data 0.000 (0.085)	loss 0.6705 (0.7031)	rank loss 0.5590 (0.5600)	offs loss 0.1115 (0.143057)	lr 0.00002321
+2021-03-30 07:59:19,198 - INFO - Process 0	epoch[23][500/1336]	time 0.920 (0.986)	data 0.000 (0.068)	loss 0.5926 (0.7002)	rank loss 0.4672 (0.5583)	offs loss 0.1254 (0.141866)	lr 0.00002321
+2021-03-30 08:00:51,395 - INFO - Process 0	epoch[23][600/1336]	time 0.919 (0.975)	data 0.000 (0.057)	loss 0.7773 (0.6948)	rank loss 0.6046 (0.5531)	offs loss 0.1727 (0.141656)	lr 0.00002321
+2021-03-30 08:02:23,138 - INFO - Process 0	epoch[23][700/1336]	time 0.919 (0.967)	data 0.000 (0.049)	loss 0.5723 (0.6944)	rank loss 0.4398 (0.5528)	offs loss 0.1325 (0.141621)	lr 0.00002321
+2021-03-30 08:03:54,993 - INFO - Process 0	epoch[23][800/1336]	time 0.896 (0.961)	data 0.000 (0.043)	loss 0.6929 (0.6960)	rank loss 0.5542 (0.5547)	offs loss 0.1387 (0.141217)	lr 0.00002321
+2021-03-30 08:05:26,766 - INFO - Process 0	epoch[23][900/1336]	time 0.930 (0.956)	data 0.000 (0.038)	loss 0.6744 (0.6974)	rank loss 0.5274 (0.5553)	offs loss 0.1470 (0.142062)	lr 0.00002321
+2021-03-30 08:06:58,666 - INFO - Process 0	epoch[23][1000/1336]	time 0.898 (0.952)	data 0.000 (0.034)	loss 0.7405 (0.6968)	rank loss 0.6216 (0.5547)	offs loss 0.1189 (0.142034)	lr 0.00002321
+2021-03-30 08:08:30,014 - INFO - Process 0	epoch[23][1100/1336]	time 0.921 (0.949)	data 0.000 (0.031)	loss 0.5694 (0.6953)	rank loss 0.4316 (0.5536)	offs loss 0.1378 (0.141676)	lr 0.00002321
+2021-03-30 08:10:01,093 - INFO - Process 0	epoch[23][1200/1336]	time 0.950 (0.946)	data 0.000 (0.029)	loss 0.6387 (0.6939)	rank loss 0.5022 (0.5524)	offs loss 0.1365 (0.141495)	lr 0.00002321
+2021-03-30 08:11:32,344 - INFO - Process 0	epoch[23][1300/1336]	time 0.932 (0.943)	data 0.000 (0.026)	loss 0.7106 (0.6931)	rank loss 0.6028 (0.5519)	offs loss 0.1078 (0.141230)	lr 0.00002321
+2021-03-30 08:12:08,161 - INFO - evaluating...
+2021-03-30 08:12:45,271 - INFO - Process 0	epoch[23][100/149]	time 0.248 (0.371)	data 0.000 (0.128)	loss 4.2249 (4.1644)	rank loss 3.6838 (3.6938)	offs loss 0.5410 (0.470581)	lr 0.00001813
+2021-03-30 08:12:58,013 - INFO - train...
+2021-03-30 08:15:02,409 - INFO - Process 0	epoch[24][100/1336]	time 0.892 (1.244)	data 0.000 (0.339)	loss 0.5936 (0.6625)	rank loss 0.4277 (0.5268)	offs loss 0.1659 (0.135678)	lr 0.00001813
+2021-03-30 08:16:34,231 - INFO - Process 0	epoch[24][200/1336]	time 0.927 (1.081)	data 0.000 (0.169)	loss 0.5954 (0.6596)	rank loss 0.4550 (0.5255)	offs loss 0.1405 (0.134081)	lr 0.00001813
+2021-03-30 08:18:05,662 - INFO - Process 0	epoch[24][300/1336]	time 0.974 (1.025)	data 0.000 (0.113)	loss 0.5916 (0.6610)	rank loss 0.4782 (0.5266)	offs loss 0.1135 (0.134368)	lr 0.00001813
+2021-03-30 08:19:36,980 - INFO - Process 0	epoch[24][400/1336]	time 0.901 (0.997)	data 0.000 (0.085)	loss 0.5443 (0.6628)	rank loss 0.4571 (0.5279)	offs loss 0.0871 (0.134893)	lr 0.00001813
+2021-03-30 08:21:08,202 - INFO - Process 0	epoch[24][500/1336]	time 0.952 (0.980)	data 0.000 (0.068)	loss 0.5733 (0.6638)	rank loss 0.4413 (0.5287)	offs loss 0.1320 (0.135066)	lr 0.00001813
+2021-03-30 08:22:40,316 - INFO - Process 0	epoch[24][600/1336]	time 0.909 (0.970)	data 0.000 (0.057)	loss 0.5383 (0.6635)	rank loss 0.4296 (0.5285)	offs loss 0.1087 (0.134940)	lr 0.00001813
+2021-03-30 08:24:11,799 - INFO - Process 0	epoch[24][700/1336]	time 0.922 (0.963)	data 0.000 (0.049)	loss 0.6657 (0.6643)	rank loss 0.5647 (0.5300)	offs loss 0.1010 (0.134307)	lr 0.00001813
+2021-03-30 08:25:43,196 - INFO - Process 0	epoch[24][800/1336]	time 0.898 (0.956)	data 0.000 (0.042)	loss 0.6956 (0.6631)	rank loss 0.5998 (0.5290)	offs loss 0.0957 (0.134060)	lr 0.00001813
+2021-03-30 08:27:14,844 - INFO - Process 0	epoch[24][900/1336]	time 0.906 (0.952)	data 0.000 (0.038)	loss 0.4489 (0.6616)	rank loss 0.3000 (0.5274)	offs loss 0.1489 (0.134155)	lr 0.00001813
+2021-03-30 08:28:46,618 - INFO - Process 0	epoch[24][1000/1336]	time 0.918 (0.949)	data 0.000 (0.034)	loss 0.8922 (0.6621)	rank loss 0.7400 (0.5276)	offs loss 0.1523 (0.134443)	lr 0.00001813
+2021-03-30 08:30:17,876 - INFO - Process 0	epoch[24][1100/1336]	time 0.902 (0.945)	data 0.000 (0.031)	loss 0.6210 (0.6608)	rank loss 0.5172 (0.5267)	offs loss 0.1038 (0.134096)	lr 0.00001813
+2021-03-30 08:31:49,413 - INFO - Process 0	epoch[24][1200/1336]	time 0.956 (0.943)	data 0.000 (0.028)	loss 0.5277 (0.6601)	rank loss 0.4128 (0.5263)	offs loss 0.1149 (0.133854)	lr 0.00001813
+2021-03-30 08:33:21,049 - INFO - Process 0	epoch[24][1300/1336]	time 0.919 (0.941)	data 0.000 (0.026)	loss 0.6504 (0.6584)	rank loss 0.5200 (0.5251)	offs loss 0.1304 (0.133289)	lr 0.00001813
+2021-03-30 08:33:56,631 - INFO - saving model to 25
+2021-03-30 08:33:59,553 - INFO - evaluating...
+2021-03-30 08:34:44,525 - INFO - Process 0	epoch[24][100/149]	time 0.249 (0.450)	data 0.000 (0.185)	loss 4.4980 (4.2227)	rank loss 3.9639 (3.7518)	offs loss 0.5341 (0.470908)	lr 0.00001355
+2021-03-30 08:34:57,164 - INFO - train...
+2021-03-30 08:37:07,332 - INFO - Process 0	epoch[25][100/1336]	time 0.938 (1.302)	data 0.000 (0.356)	loss 0.6213 (0.6496)	rank loss 0.4994 (0.5147)	offs loss 0.1219 (0.134956)	lr 0.00001355
+2021-03-30 08:38:38,722 - INFO - Process 0	epoch[25][200/1336]	time 0.922 (1.108)	data 0.000 (0.178)	loss 0.9345 (0.6359)	rank loss 0.7990 (0.5060)	offs loss 0.1354 (0.129913)	lr 0.00001355
+2021-03-30 08:40:10,272 - INFO - Process 0	epoch[25][300/1336]	time 0.923 (1.044)	data 0.000 (0.119)	loss 0.5242 (0.6354)	rank loss 0.4095 (0.5046)	offs loss 0.1148 (0.130763)	lr 0.00001355
+2021-03-30 08:41:41,783 - INFO - Process 0	epoch[25][400/1336]	time 0.922 (1.012)	data 0.000 (0.089)	loss 0.7650 (0.6355)	rank loss 0.5358 (0.5059)	offs loss 0.2291 (0.129634)	lr 0.00001355
+2021-03-30 08:43:12,959 - INFO - Process 0	epoch[25][500/1336]	time 0.907 (0.992)	data 0.000 (0.071)	loss 0.5762 (0.6361)	rank loss 0.4555 (0.5067)	offs loss 0.1206 (0.129420)	lr 0.00001355
+2021-03-30 08:44:44,135 - INFO - Process 0	epoch[25][600/1336]	time 0.925 (0.978)	data 0.002 (0.059)	loss 0.4396 (0.6357)	rank loss 0.3454 (0.5068)	offs loss 0.0942 (0.128891)	lr 0.00001355
+2021-03-30 08:46:15,424 - INFO - Process 0	epoch[25][700/1336]	time 0.940 (0.969)	data 0.000 (0.051)	loss 0.6157 (0.6363)	rank loss 0.4876 (0.5078)	offs loss 0.1282 (0.128577)	lr 0.00001355
+2021-03-30 08:47:46,345 - INFO - Process 0	epoch[25][800/1336]	time 0.910 (0.961)	data 0.000 (0.045)	loss 0.8600 (0.6356)	rank loss 0.7718 (0.5072)	offs loss 0.0883 (0.128412)	lr 0.00001355
+2021-03-30 08:49:17,735 - INFO - Process 0	epoch[25][900/1336]	time 0.903 (0.956)	data 0.000 (0.040)	loss 0.4682 (0.6326)	rank loss 0.3269 (0.5044)	offs loss 0.1413 (0.128202)	lr 0.00001355
+2021-03-30 08:50:49,247 - INFO - Process 0	epoch[25][1000/1336]	time 0.892 (0.952)	data 0.000 (0.036)	loss 0.7869 (0.6311)	rank loss 0.6402 (0.5032)	offs loss 0.1467 (0.127925)	lr 0.00001355
+2021-03-30 08:52:20,459 - INFO - Process 0	epoch[25][1100/1336]	time 0.924 (0.948)	data 0.000 (0.032)	loss 0.5950 (0.6308)	rank loss 0.4630 (0.5028)	offs loss 0.1320 (0.127977)	lr 0.00001355
+2021-03-30 08:53:51,318 - INFO - Process 0	epoch[25][1200/1336]	time 0.911 (0.945)	data 0.000 (0.030)	loss 0.5719 (0.6280)	rank loss 0.4548 (0.5002)	offs loss 0.1171 (0.127836)	lr 0.00001355
+2021-03-30 08:55:22,786 - INFO - Process 0	epoch[25][1300/1336]	time 0.928 (0.943)	data 0.000 (0.028)	loss 0.6608 (0.6274)	rank loss 0.5586 (0.4996)	offs loss 0.1022 (0.127833)	lr 0.00001355
+2021-03-30 08:55:58,532 - INFO - evaluating...
+2021-03-30 08:56:39,570 - INFO - Process 0	epoch[25][100/149]	time 0.241 (0.410)	data 0.000 (0.157)	loss 4.4611 (4.3136)	rank loss 3.9941 (3.8397)	offs loss 0.4670 (0.473886)	lr 0.00000955
+2021-03-30 08:56:52,301 - INFO - train...
+2021-03-30 08:58:55,776 - INFO - Process 0	epoch[26][100/1336]	time 0.893 (1.235)	data 0.000 (0.332)	loss 0.6824 (0.6055)	rank loss 0.5521 (0.4824)	offs loss 0.1302 (0.123010)	lr 0.00000955
+2021-03-30 09:00:27,515 - INFO - Process 0	epoch[26][200/1336]	time 0.953 (1.076)	data 0.000 (0.166)	loss 0.6036 (0.6088)	rank loss 0.4730 (0.4858)	offs loss 0.1306 (0.123055)	lr 0.00000955
+2021-03-30 09:01:58,804 - INFO - Process 0	epoch[26][300/1336]	time 0.941 (1.022)	data 0.000 (0.111)	loss 0.6132 (0.6013)	rank loss 0.4542 (0.4792)	offs loss 0.1590 (0.122105)	lr 0.00000955
+2021-03-30 09:03:30,105 - INFO - Process 0	epoch[26][400/1336]	time 0.898 (0.994)	data 0.000 (0.083)	loss 0.7558 (0.5986)	rank loss 0.6495 (0.4773)	offs loss 0.1064 (0.121295)	lr 0.00000955
+2021-03-30 09:05:01,373 - INFO - Process 0	epoch[26][500/1336]	time 0.941 (0.978)	data 0.000 (0.067)	loss 0.5340 (0.6001)	rank loss 0.4236 (0.4788)	offs loss 0.1105 (0.121264)	lr 0.00000955
+2021-03-30 09:06:32,452 - INFO - Process 0	epoch[26][600/1336]	time 0.933 (0.967)	data 0.000 (0.056)	loss 0.5553 (0.6014)	rank loss 0.4449 (0.4806)	offs loss 0.1104 (0.120788)	lr 0.00000955
+2021-03-30 09:08:03,903 - INFO - Process 0	epoch[26][700/1336]	time 0.926 (0.959)	data 0.000 (0.048)	loss 0.6079 (0.6003)	rank loss 0.4505 (0.4794)	offs loss 0.1574 (0.120927)	lr 0.00000955
+2021-03-30 09:09:35,041 - INFO - Process 0	epoch[26][800/1336]	time 0.934 (0.953)	data 0.000 (0.042)	loss 0.7279 (0.6023)	rank loss 0.6401 (0.4813)	offs loss 0.0877 (0.120921)	lr 0.00000955
+2021-03-30 09:11:06,825 - INFO - Process 0	epoch[26][900/1336]	time 0.893 (0.949)	data 0.000 (0.037)	loss 0.6245 (0.6021)	rank loss 0.4692 (0.4812)	offs loss 0.1552 (0.120878)	lr 0.00000955
+2021-03-30 09:12:38,076 - INFO - Process 0	epoch[26][1000/1336]	time 0.904 (0.946)	data 0.000 (0.033)	loss 0.6304 (0.6016)	rank loss 0.4956 (0.4805)	offs loss 0.1348 (0.121125)	lr 0.00000955
+2021-03-30 09:14:09,495 - INFO - Process 0	epoch[26][1100/1336]	time 0.899 (0.943)	data 0.000 (0.030)	loss 0.6135 (0.6014)	rank loss 0.5248 (0.4805)	offs loss 0.0886 (0.120807)	lr 0.00000955
+2021-03-30 09:15:41,291 - INFO - Process 0	epoch[26][1200/1336]	time 0.906 (0.941)	data 0.000 (0.028)	loss 0.5501 (0.5992)	rank loss 0.4096 (0.4783)	offs loss 0.1405 (0.120950)	lr 0.00000955
+2021-03-30 09:17:12,394 - INFO - Process 0	epoch[26][1300/1336]	time 0.928 (0.939)	data 0.000 (0.026)	loss 0.6768 (0.5988)	rank loss 0.5577 (0.4778)	offs loss 0.1191 (0.121054)	lr 0.00000955
+2021-03-30 09:17:47,718 - INFO - evaluating...
+2021-03-30 09:18:26,034 - INFO - Process 0	epoch[26][100/149]	time 0.246 (0.383)	data 0.000 (0.131)	loss 4.1317 (4.4379)	rank loss 3.7117 (3.9518)	offs loss 0.4200 (0.486103)	lr 0.00000618
+2021-03-30 09:18:38,854 - INFO - train...
+2021-03-30 09:20:42,111 - INFO - Process 0	epoch[27][100/1336]	time 0.903 (1.233)	data 0.000 (0.330)	loss 0.8247 (0.5871)	rank loss 0.6516 (0.4682)	offs loss 0.1732 (0.118903)	lr 0.00000618
+2021-03-30 09:22:13,885 - INFO - Process 0	epoch[27][200/1336]	time 0.932 (1.075)	data 0.000 (0.165)	loss 0.5432 (0.5832)	rank loss 0.4236 (0.4642)	offs loss 0.1196 (0.118928)	lr 0.00000618
+2021-03-30 09:23:45,269 - INFO - Process 0	epoch[27][300/1336]	time 0.919 (1.021)	data 0.000 (0.110)	loss 0.6107 (0.5830)	rank loss 0.4986 (0.4635)	offs loss 0.1121 (0.119430)	lr 0.00000618
+2021-03-30 09:25:16,452 - INFO - Process 0	epoch[27][400/1336]	time 0.932 (0.994)	data 0.000 (0.083)	loss 0.5232 (0.5824)	rank loss 0.4253 (0.4642)	offs loss 0.0979 (0.118183)	lr 0.00000618
+2021-03-30 09:26:48,033 - INFO - Process 0	epoch[27][500/1336]	time 0.904 (0.978)	data 0.000 (0.066)	loss 0.5532 (0.5851)	rank loss 0.4236 (0.4667)	offs loss 0.1296 (0.118328)	lr 0.00000618
+2021-03-30 09:28:19,061 - INFO - Process 0	epoch[27][600/1336]	time 0.972 (0.967)	data 0.000 (0.055)	loss 0.7378 (0.5858)	rank loss 0.6108 (0.4677)	offs loss 0.1269 (0.118104)	lr 0.00000618
+2021-03-30 09:29:50,518 - INFO - Process 0	epoch[27][700/1336]	time 0.916 (0.960)	data 0.000 (0.047)	loss 0.5160 (0.5848)	rank loss 0.4150 (0.4671)	offs loss 0.1010 (0.117649)	lr 0.00000618
+2021-03-30 09:31:22,053 - INFO - Process 0	epoch[27][800/1336]	time 0.925 (0.954)	data 0.000 (0.041)	loss 0.3328 (0.5849)	rank loss 0.2337 (0.4670)	offs loss 0.0991 (0.117927)	lr 0.00000618
+2021-03-30 09:32:53,523 - INFO - Process 0	epoch[27][900/1336]	time 0.896 (0.950)	data 0.000 (0.037)	loss 0.5515 (0.5833)	rank loss 0.4583 (0.4653)	offs loss 0.0932 (0.118050)	lr 0.00000618
+2021-03-30 09:34:25,350 - INFO - Process 0	epoch[27][1000/1336]	time 0.935 (0.946)	data 0.001 (0.033)	loss 0.5465 (0.5823)	rank loss 0.4259 (0.4643)	offs loss 0.1205 (0.118086)	lr 0.00000618
+2021-03-30 09:35:56,723 - INFO - Process 0	epoch[27][1100/1336]	time 0.910 (0.944)	data 0.000 (0.030)	loss 0.4657 (0.5823)	rank loss 0.3739 (0.4645)	offs loss 0.0918 (0.117853)	lr 0.00000618
+2021-03-30 09:37:28,294 - INFO - Process 0	epoch[27][1200/1336]	time 0.897 (0.941)	data 0.000 (0.028)	loss 0.3622 (0.5803)	rank loss 0.2683 (0.4628)	offs loss 0.0939 (0.117487)	lr 0.00000618
+2021-03-30 09:38:59,867 - INFO - Process 0	epoch[27][1300/1336]	time 0.905 (0.939)	data 0.000 (0.026)	loss 0.5992 (0.5804)	rank loss 0.4717 (0.4631)	offs loss 0.1274 (0.117304)	lr 0.00000618
+2021-03-30 09:39:35,213 - INFO - evaluating...
+2021-03-30 09:40:14,026 - INFO - Process 0	epoch[27][100/149]	time 0.244 (0.388)	data 0.000 (0.137)	loss 5.1593 (4.4867)	rank loss 4.6334 (4.0023)	offs loss 0.5259 (0.484474)	lr 0.00000351
+2021-03-30 09:40:26,745 - INFO - train...
+2021-03-30 09:42:32,086 - INFO - Process 0	epoch[28][100/1336]	time 0.897 (1.253)	data 0.000 (0.343)	loss 0.6941 (0.5723)	rank loss 0.5492 (0.4549)	offs loss 0.1449 (0.117474)	lr 0.00000351
+2021-03-30 09:44:03,641 - INFO - Process 0	epoch[28][200/1336]	time 0.891 (1.084)	data 0.000 (0.171)	loss 0.5733 (0.5655)	rank loss 0.4629 (0.4485)	offs loss 0.1103 (0.117000)	lr 0.00000351
+2021-03-30 09:45:34,543 - INFO - Process 0	epoch[28][300/1336]	time 0.881 (1.026)	data 0.000 (0.114)	loss 0.6493 (0.5656)	rank loss 0.5602 (0.4489)	offs loss 0.0891 (0.116686)	lr 0.00000351
+2021-03-30 09:47:06,012 - INFO - Process 0	epoch[28][400/1336]	time 0.888 (0.998)	data 0.000 (0.086)	loss 0.4565 (0.5690)	rank loss 0.3330 (0.4533)	offs loss 0.1234 (0.115668)	lr 0.00000351
+2021-03-30 09:48:37,143 - INFO - Process 0	epoch[28][500/1336]	time 0.899 (0.981)	data 0.000 (0.069)	loss 0.7042 (0.5695)	rank loss 0.5455 (0.4544)	offs loss 0.1587 (0.115137)	lr 0.00000351
+2021-03-30 09:50:08,988 - INFO - Process 0	epoch[28][600/1336]	time 0.892 (0.970)	data 0.000 (0.057)	loss 0.5175 (0.5692)	rank loss 0.4010 (0.4544)	offs loss 0.1165 (0.114798)	lr 0.00000351
+2021-03-30 09:51:40,239 - INFO - Process 0	epoch[28][700/1336]	time 0.907 (0.962)	data 0.000 (0.049)	loss 0.6584 (0.5689)	rank loss 0.5393 (0.4544)	offs loss 0.1191 (0.114556)	lr 0.00000351
+2021-03-30 09:53:11,374 - INFO - Process 0	epoch[28][800/1336]	time 0.888 (0.956)	data 0.000 (0.043)	loss 0.4789 (0.5691)	rank loss 0.3712 (0.4545)	offs loss 0.1077 (0.114604)	lr 0.00000351
+2021-03-30 09:54:42,721 - INFO - Process 0	epoch[28][900/1336]	time 0.930 (0.951)	data 0.000 (0.038)	loss 0.4574 (0.5702)	rank loss 0.3458 (0.4559)	offs loss 0.1116 (0.114348)	lr 0.00000351
+2021-03-30 09:56:14,258 - INFO - Process 0	epoch[28][1000/1336]	time 0.907 (0.948)	data 0.000 (0.034)	loss 0.5864 (0.5693)	rank loss 0.4596 (0.4549)	offs loss 0.1268 (0.114444)	lr 0.00000351
+2021-03-30 09:57:45,583 - INFO - Process 0	epoch[28][1100/1336]	time 0.905 (0.944)	data 0.000 (0.031)	loss 0.5587 (0.5693)	rank loss 0.4790 (0.4549)	offs loss 0.0797 (0.114373)	lr 0.00000351
+2021-03-30 09:59:16,720 - INFO - Process 0	epoch[28][1200/1336]	time 0.904 (0.942)	data 0.000 (0.029)	loss 0.3977 (0.5695)	rank loss 0.2900 (0.4552)	offs loss 0.1077 (0.114271)	lr 0.00000351
+2021-03-30 10:00:47,983 - INFO - Process 0	epoch[28][1300/1336]	time 0.901 (0.939)	data 0.000 (0.027)	loss 0.4408 (0.5691)	rank loss 0.3589 (0.4550)	offs loss 0.0819 (0.114120)	lr 0.00000351
+2021-03-30 10:01:24,216 - INFO - evaluating...
+2021-03-30 10:02:03,073 - INFO - Process 0	epoch[28][100/149]	time 0.243 (0.389)	data 0.000 (0.142)	loss 4.6465 (4.4870)	rank loss 4.0386 (4.0062)	offs loss 0.6079 (0.480884)	lr 0.00000157
+2021-03-30 10:02:15,852 - INFO - train...
+2021-03-30 10:04:19,619 - INFO - Process 0	epoch[29][100/1336]	time 0.906 (1.238)	data 0.000 (0.326)	loss 0.5906 (0.5689)	rank loss 0.4598 (0.4555)	offs loss 0.1308 (0.113383)	lr 0.00000157
+2021-03-30 10:05:51,191 - INFO - Process 0	epoch[29][200/1336]	time 0.907 (1.077)	data 0.000 (0.163)	loss 0.6395 (0.5689)	rank loss 0.5210 (0.4553)	offs loss 0.1185 (0.113547)	lr 0.00000157
+2021-03-30 10:07:22,478 - INFO - Process 0	epoch[29][300/1336]	time 0.883 (1.022)	data 0.000 (0.109)	loss 0.4107 (0.5687)	rank loss 0.3211 (0.4548)	offs loss 0.0896 (0.113934)	lr 0.00000157
+2021-03-30 10:08:54,124 - INFO - Process 0	epoch[29][400/1336]	time 0.914 (0.996)	data 0.000 (0.082)	loss 0.5346 (0.5631)	rank loss 0.4322 (0.4496)	offs loss 0.1024 (0.113510)	lr 0.00000157
+2021-03-30 10:10:25,377 - INFO - Process 0	epoch[29][500/1336]	time 0.903 (0.979)	data 0.000 (0.065)	loss 0.6627 (0.5637)	rank loss 0.5483 (0.4511)	offs loss 0.1143 (0.112577)	lr 0.00000157
+2021-03-30 10:11:56,904 - INFO - Process 0	epoch[29][600/1336]	time 0.896 (0.968)	data 0.000 (0.055)	loss 0.6513 (0.5618)	rank loss 0.5467 (0.4495)	offs loss 0.1046 (0.112305)	lr 0.00000157
+2021-03-30 10:13:27,988 - INFO - Process 0	epoch[29][700/1336]	time 0.930 (0.960)	data 0.000 (0.047)	loss 0.5800 (0.5615)	rank loss 0.4711 (0.4495)	offs loss 0.1089 (0.112060)	lr 0.00000157
+2021-03-30 10:14:59,105 - INFO - Process 0	epoch[29][800/1336]	time 0.935 (0.954)	data 0.000 (0.041)	loss 0.5195 (0.5599)	rank loss 0.4085 (0.4481)	offs loss 0.1111 (0.111856)	lr 0.00000157
+2021-03-30 10:16:30,298 - INFO - Process 0	epoch[29][900/1336]	time 0.918 (0.949)	data 0.000 (0.036)	loss 0.5434 (0.5599)	rank loss 0.4355 (0.4478)	offs loss 0.1080 (0.112049)	lr 0.00000157
+2021-03-30 10:18:01,807 - INFO - Process 0	epoch[29][1000/1336]	time 0.911 (0.946)	data 0.000 (0.033)	loss 0.8145 (0.5584)	rank loss 0.6932 (0.4463)	offs loss 0.1213 (0.112100)	lr 0.00000157
+2021-03-30 10:19:33,483 - INFO - Process 0	epoch[29][1100/1336]	time 0.919 (0.943)	data 0.000 (0.030)	loss 0.5217 (0.5590)	rank loss 0.3821 (0.4470)	offs loss 0.1396 (0.112016)	lr 0.00000157
+2021-03-30 10:21:04,821 - INFO - Process 0	epoch[29][1200/1336]	time 0.897 (0.941)	data 0.000 (0.027)	loss 0.5201 (0.5598)	rank loss 0.4122 (0.4478)	offs loss 0.1079 (0.112032)	lr 0.00000157
+2021-03-30 10:22:36,134 - INFO - Process 0	epoch[29][1300/1336]	time 0.918 (0.939)	data 0.000 (0.025)	loss 0.8960 (0.5606)	rank loss 0.7553 (0.4487)	offs loss 0.1407 (0.111926)	lr 0.00000157
+2021-03-30 10:23:11,542 - INFO - saving model to 30
+2021-03-30 10:23:14,083 - INFO - evaluating...
+2021-03-30 10:24:06,268 - INFO - Process 0	epoch[29][100/149]	time 1.889 (0.522)	data 1.650 (0.232)	loss 4.4124 (4.5521)	rank loss 3.8675 (4.0614)	offs loss 0.5449 (0.490707)	lr 0.00000039
+2021-03-30 10:24:19,051 - INFO - train...

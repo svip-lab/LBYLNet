@@ -4,7 +4,7 @@ cache
 .vscode
 ext/yolov3.weights
 ext/lib
-*.out
+/*.out 
 results/**/visulize/
 **/*.pyc
 **/__pycache__/**

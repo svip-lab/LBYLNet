@@ -1,7 +1,7 @@
 # LBYL-Net
 
 
-This repo implement paper [*Look Before You Leap: Learning Landmark Features For One-Stage Visual Grounding*](https://arxiv.org/abs/2104.04386) CVPR 2021. 
+This repo implements paper [*Look Before You Leap: Learning Landmark Features For One-Stage Visual Grounding*](https://arxiv.org/abs/2104.04386) CVPR 2021. 
 
 <image src="imgs/landmarks.png" width="512">
 
@@ -43,7 +43,7 @@ By default, we use 2 gpus and batchsize 64 with DDP (distributed data-parallel).
 We have provided several configurations and training log for reproducing our results. If you want to use different hyperparameters or models, you may create configs for yourself. Here are examples:
 - For distributed training with gpus : 
     ```bash
-    CUDA_VISIBLE_DEVICES=0,1 python train.py lbyl_lstm_referit+_batch64  --workers 8 --distributed --world_size 1  --dist_url "tcp://127.0.0.1:60006"
+    CUDA_VISIBLE_DEVICES=0,1 python train.py lbyl_lstm_referit_batch64  --workers 8 --distributed --world_size 1  --dist_url "tcp://127.0.0.1:60006"
     ```
 - If you use single gpu or won't use distributed training (make sure to adjust the batchsize in the corresponding config file to match your devices):
     ```bash
@@ -56,23 +56,11 @@ We have provided several configurations and training log for reproducing our res
     ```
 -------- 
 ### Trained Models
-We provide the our retrain the models with this *re-organized* codebase and provide their checkpoints and log for someone to reproduce the results. To use our trained models, download them from the links below and save them to directory `cache`.
-```bash
-# put the downloaded files under the dir ./cache/
-tar -xvf <file>
-```
-then the file path is expected to be `<LBYLNet dir>cache/nnet/<config_name>.<dataset_name>/<config>_100.pkl` 
+We provide the our retrained models with this *re-organized* codebase and provide their checkpoints and logs for reproducing the results. To use our trained models, download them from the [Google Drive](https://drive.google.com/drive/folders/1ICLArOUtWAx_W9nfn7uwobdtIkmN_RoA?usp=sharing) and save them into directory `cache`. Then the file path is expected to be `<LBYLNet dir>cache/nnet/<config>/<dataset>/<config>_100.pkl` 
 
 `Notice`: The reproduced performances are occassionally higher or lower (within a reasonable range) than the results reported in the paper.
 
-In this repo, we provide our LBYL-Net trained on the following datasets `pkl` and training `log` below. 
-
-
-<!-- - [LBYLNet-ReferitGame](https://link) Training log [ReferitGame log]() -->
-<!-- - [LBYLNet-RefCOCO](https://link)     Training [RefCOCO log]() -->
-<!-- - [LBYLNet-RefCOCO+](https://link)    Training [RefCOCO+ log]() -->
-
-<!-- ### Performance -->
+In this repo, we provide the peformance of our LBYL-Nets below. You can also find the details on `<LBYLNet dir>/results` and `<LBYLNet dir>/logs`. 
 
 - Performance on ReferitGame (Pr@0.5). 
     <table>
@@ -163,19 +151,21 @@ import torch
 from core.test.test import _visualize
 from core.groundors import Net 
 # pick one model
-cfg_file = "lbyl_bert_unc_batch64"
+cfg_file = "lbyl_bert_unc+_batch64"
 detector = Net(cfg_file, iter=100)
 # inference
 image = cv2.imread('imgs/demo.jpeg')
-phrase = 'the women in black'
+phrase = 'the green gaint'
 bbox = detector(image, phrase)
 _visualize(image, pred_bbox=bbox, phrase=phrase, save_path='imgs/demo_out.jpg', color=(1, 174, 245), draw_phrase=True)
 ```
 
 **Input:** 
+
 <img src="imgs/demo.jpeg" width="512"> 
 
 **Output:** 
+
 <img src="imgs/demo_out.jpg" width="512">
 
 --------------------------------
