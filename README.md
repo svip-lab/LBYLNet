@@ -56,7 +56,7 @@ We have provided several configurations and training log for reproducing our res
     ```
 -------- 
 ### Trained Models
-We provide the our retrained models with this *re-organized* codebase and provide their checkpoints and logs for reproducing the results. To use our trained models, download them from the [Google Drive](https://drive.google.com/drive/folders/1ICLArOUtWAx_W9nfn7uwobdtIkmN_RoA?usp=sharing) and save them into directory `cache`. Then the file path is expected to be `<LBYLNet dir>cache/nnet/<config>/<dataset>/<config>_100.pkl` 
+We provide the our retrained models with this *re-organized* codebase and provide their checkpoints and logs for reproducing the results. To use our trained models, download them from the [Google Drive](https://drive.google.com/drive/folders/1ICLArOUtWAx_W9nfn7uwobdtIkmN_RoA?usp=sharing) and save them into directory `cache`. Then the file path is expected to be `<LBYLNet dir>/cache/nnet/<config>/<dataset>/<config>_100.pkl` 
 
 `Notice`: The reproduced performances are occassionally higher or lower (within a reasonable range) than the results reported in the paper.
 
