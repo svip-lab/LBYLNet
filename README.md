@@ -23,11 +23,11 @@ This repo implements paper [*Look Before You Leap: Learning Landmark Features Fo
 2. You also need to install our landmark feature convolution:
     ```bash
     cd ext
-    git clone https://github.com/svip-lab/landmarkconv.git
+    git clone https://github.com/hbb1/landmarkconv.git
     cd landmarkconv/lib/layers
     python setup.py install --user
     ```
-3. We follow dataset structure [DMS](https://link) and [FAOA](https://link). For convience, we have pack them togather, including ReferitGame, RefCOCO, RefCOCO+, RefCOCOg.
+3. We follow dataset structure [DMS](https://github.com/BCV-Uniandes/DMS) and [FAOA](https://github.com/zyang-ur/onestage_grounding). For convience, we have pack them togather, including ReferitGame, RefCOCO, RefCOCO+, RefCOCOg.
     ```bash
     bash data/refer/download_data.sh ./data/refer
     ```
@@ -178,10 +178,11 @@ This repo is organized as [CornerNet-Lite](https://github.com/princeton-vl/Corne
 If you use any part of this repo in your research, please cite our paper:
 
 ```
-@article{huang2021look,
+@InProceedings{huang2021look,
       title={Look Before You Leap: Learning Landmark Features for One-Stage Visual Grounding}, 
-      author={Binbin Huang and Dongze Lian and Weixin Luo and Shenghua Gao},
-      journal={CVPR},
+      author={Huang, Binbin and Lian, Dongze and Luo, Weixin and Gao, Shenghua},
+      booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+      month = {June},
       year={2021},
 }
 ```
