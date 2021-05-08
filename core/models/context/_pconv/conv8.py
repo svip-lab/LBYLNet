@@ -1,6 +1,5 @@
 import torch
 import numpy as np
-import landmarks
 import pdb
 from torch.autograd import gradcheck
 from torch.autograd import Function
