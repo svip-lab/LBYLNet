@@ -22,7 +22,7 @@ The core of this paper is [Landmark Convolution](https://github.com/hbb1/landmar
     cd LBYLNet
     pip install requirements.txt 
     ```
-2. You also need to install our [landmark feature convolution]((https://github.com/hbb1/landmarkconv):
+2. You also need to install our [landmark feature convolution](https://github.com/hbb1/landmarkconv):
     ```bash
     cd ext
     git clone https://github.com/hbb1/landmarkconv.git
